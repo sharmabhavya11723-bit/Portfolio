@@ -2698,6 +2698,7 @@
   const nav = document.querySelector('nav');
   const navTrigger = document.getElementById('navTrigger');
   let navTimeout;
+  let lastScrollY = 0;
 
   function showNav() {
     nav.classList.add('visible');
@@ -2710,10 +2711,35 @@
     }, 300);
   }
 
+  // Show navbar at top of page, hide when scrolling down
+  function handleScroll() {
+    const scrollY = window.scrollY;
+
+    if (scrollY < 100) {
+      // At top of page - show navbar
+      showNav();
+    } else {
+      // Scrolled down - hide navbar
+      nav.classList.remove('visible');
+    }
+
+    lastScrollY = scrollY;
+  }
+
+  // Initial check
+  handleScroll();
+
+  // Listen for scroll
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
   navTrigger.addEventListener('mouseenter', showNav);
   nav.addEventListener('mouseenter', showNav);
-  navTrigger.addEventListener('mouseleave', hideNav);
-  nav.addEventListener('mouseleave', hideNav);
+  navTrigger.addEventListener('mouseleave', () => {
+    if (window.scrollY >= 100) hideNav();
+  });
+  nav.addEventListener('mouseleave', () => {
+    if (window.scrollY >= 100) hideNav();
+  });
 
   // Happy Space Modal Functions
   function openHappySpaceModal() {
