@@ -1108,26 +1108,39 @@
     font-weight: bold;
   }
   .case-section.conclusion {
-    text-align: center;
     padding: 60px;
     background: linear-gradient(135deg, var(--pink-pale), white);
     border-radius: 24px;
     margin-top: 40px;
   }
-  .conclusion-text h3 {
+
+  .conclusion-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .conclusion-main {
+    flex: 1;
+  }
+
+  .conclusion-main h3 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
     font-weight: 900;
     margin-bottom: 16px;
     color: var(--dark);
   }
-  .conclusion-text p {
+
+  .conclusion-main p {
     font-size: 16px;
     color: var(--gray);
-    max-width: 600px;
-    margin: 0 auto 24px;
+    max-width: 500px;
+    margin-bottom: 24px;
     line-height: 1.7;
   }
+
   .designer-signature {
     font-size: 14px;
     font-weight: 600;
@@ -1135,7 +1148,6 @@
     padding-top: 24px;
     border-top: 1px solid var(--pink-light);
     display: inline-block;
-    margin-bottom: 32px;
   }
 
   .back-to-top {
@@ -1168,7 +1180,234 @@
     transform: translateY(-2px);
   }
 
+  /* UI Screens Grid */
+  .ui-screens-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .ui-screen-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--pink-light);
+    box-shadow: 0 4px 20px rgba(255,77,141,0.08);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+  }
+
+  .ui-screen-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255,77,141,0.2);
+    border-color: var(--pink);
+  }
+
+  .ui-screen-card.full-width {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 0;
+  }
+
+  .ui-screen-frame {
+    background: linear-gradient(135deg, var(--pink-pale), white);
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ui-screen-frame::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,77,141,0.1) 0%, transparent 50%);
+    transform: translate(-50%, -50%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+  }
+
+  .ui-screen-frame img {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ui-screen-card:hover .ui-screen-frame img {
+    transform: scale(1.05);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+  }
+
+  .ui-screen-info {
+    padding: 24px 28px;
+  }
+
+  .ui-screen-info h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+
+  .ui-screen-info p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .ui-screen-card.full-width .ui-screen-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    background: linear-gradient(135deg, white, var(--pink-pale));
+  }
+
+  .ui-screen-card.full-width .ui-screen-info h4 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .ui-screen-card.full-width .ui-screen-info p {
+    font-size: 16px;
+  }
+
+  /* Micro-interactions for case study elements */
+  .overview-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .overview-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255,77,141,0.15);
+    border-color: var(--pink);
+  }
+
+  .finding-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .finding-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(255,77,141,0.2);
+  }
+
+  .finding-card:hover .finding-percent {
+    transform: scale(1.1);
+  }
+
+  .finding-percent {
+    transition: transform 0.3s ease;
+  }
+
+  .persona-card {
+    transition: all 0.4s ease;
+  }
+
+  .persona-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(255,77,141,0.15);
+  }
+
+  .persona-avatar {
+    transition: transform 0.3s ease;
+  }
+
+  .persona-card:hover .persona-avatar {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .process-item {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .process-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(255,77,141,0.15);
+    background: linear-gradient(135deg, var(--pink-light), var(--pink-pale));
+  }
+
+  .process-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .process-item:hover .process-icon {
+    transform: scale(1.2) rotate(-5deg);
+  }
+
+  .ia-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .ia-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(255,77,141,0.15);
+  }
+
+  .ia-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .ia-card:hover .ia-icon {
+    transform: scale(1.2);
+  }
+
+  .research-item {
+    transition: all 0.3s ease;
+    padding: 12px;
+    border-radius: 12px;
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  .research-item:hover {
+    background: var(--pink-pale);
+    transform: translateX(8px);
+  }
+
+  .research-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .research-item:hover .research-icon {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  /* Responsive for conclusion */
   @media (max-width: 768px) {
+    .conclusion-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .ui-screens-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ui-screen-card.full-width {
+      grid-template-columns: 1fr;
+    }
+
     .case-study-info-grid { grid-template-columns: repeat(2, 1fr); }
     .overview-grid { grid-template-columns: 1fr; }
     .research-grid { grid-template-columns: 1fr; }
@@ -1722,16 +1961,16 @@
           <div class="info-value">Bhavya Sharma</div>
         </div>
         <div class="info-item">
-          <div class="info-label">Student ID</div>
-          <div class="info-value">12318038</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">Course</div>
-          <div class="info-value">IXD262</div>
-        </div>
-        <div class="info-item">
           <div class="info-label">Type</div>
           <div class="info-value">Mobile App</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Platform</div>
+          <div class="info-value">iOS & Android</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Year</div>
+          <div class="info-value">2024</div>
         </div>
       </div>
     </div>
@@ -2063,9 +2302,83 @@
         </div>
       </section>
 
-      <!-- Usability Testing -->
+      <!-- UI Screens -->
       <section class="case-section">
         <div class="section-num">08</div>
+        <h2>UI Screens</h2>
+        <h3>From wireframes to high-fidelity designs</h3>
+        <p>A visual journey through the key screens of Happy Space — showcasing the evolution from concept to polished, accessible interface.</p>
+        
+        <div class="ui-screens-grid">
+          <div class="ui-screen-card">
+            <div class="ui-screen-frame">
+              <img src="Portfolio/Screen1.png" alt="Splash Screen" loading="lazy">
+            </div>
+            <div class="ui-screen-info">
+              <h4>Splash Screen</h4>
+              <p>Warm welcome with brand identity and accessibility promise</p>
+            </div>
+          </div>
+          <div class="ui-screen-card">
+            <div class="ui-screen-frame">
+              <img src="Portfolio/Screen2.png" alt="Onboarding" loading="lazy">
+            </div>
+            <div class="ui-screen-info">
+              <h4>Onboarding</h4>
+              <p>Personalized accessibility preferences selection</p>
+            </div>
+          </div>
+          <div class="ui-screen-card">
+            <div class="ui-screen-frame">
+              <img src="Portfolio/Screen3.png" alt="Home Feed" loading="lazy">
+            </div>
+            <div class="ui-screen-info">
+              <h4>Home Feed</h4>
+              <p>Personalized content with voice control integration</p>
+            </div>
+          </div>
+          <div class="ui-screen-card">
+            <div class="ui-screen-frame">
+              <img src="Portfolio/Screen4.png" alt="Community" loading="lazy">
+            </div>
+            <div class="ui-screen-info">
+              <h4>Community Hub</h4>
+              <p>Social circles and friend finder interface</p>
+            </div>
+          </div>
+          <div class="ui-screen-card">
+            <div class="ui-screen-frame">
+              <img src="Portfolio/Screen5.png" alt="Education" loading="lazy">
+            </div>
+            <div class="ui-screen-info">
+              <h4>Education & Skills</h4>
+              <p>Accessible learning modules and mentorship</p>
+            </div>
+          </div>
+          <div class="ui-screen-card">
+            <div class="ui-screen-frame">
+              <img src="Portfolio/Screen6.png" alt="Entertainment" loading="lazy">
+            </div>
+            <div class="ui-screen-info">
+              <h4>Entertainment</h4>
+              <p>Inclusive games and talent showcase features</p>
+            </div>
+          </div>
+          <div class="ui-screen-card full-width">
+            <div class="ui-screen-frame">
+              <img src="Portfolio/Screen7.png" alt="Health Support" loading="lazy">
+            </div>
+            <div class="ui-screen-info">
+              <h4>Health & Support</h4>
+              <p>Quick help, therapy access, and medication reminders — healthcare at your fingertips</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Usability Testing -->
+      <section class="case-section">
+        <div class="section-num">09</div>
         <h2>Usability Testing</h2>
         <h3>Testing revealed strengths and gaps</h3>
         <p>Usability testing assessed the hi-fi prototypes across four key dimensions: interface clarity, navigation flow, accessibility features, and emotional appeal.</p>
@@ -2097,10 +2410,12 @@
 
       <!-- Conclusion -->
       <section class="case-section conclusion">
-        <div class="conclusion-text">
-          <h3>Every voice, every talent, every smile matters.</h3>
-          <p>Happy Space is designed with the belief that disability is not an inability — and that with the right digital environment, every individual can connect, grow, and thrive.</p>
-          <div class="designer-signature">Bhavya Sharma · 12318038 · IXD262 Design Studio</div>
+        <div class="conclusion-content">
+          <div class="conclusion-main">
+            <h3>Every voice, every talent, every smile matters.</h3>
+            <p>Happy Space is designed with the belief that disability is not an inability — and that with the right digital environment, every individual can connect, grow, and thrive.</p>
+            <div class="designer-signature">Bhavya Sharma · UX Designer</div>
+          </div>
           <button class="back-to-top" onclick="scrollToTopHappySpace()">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M18 15l-6-6-6 6"/>
@@ -2385,9 +2700,9 @@
 
   // Scroll to top of Happy Space modal
   function scrollToTopHappySpace() {
-    const modalContent = document.querySelector('.case-study-modal.active .modal-content');
-    if (modalContent) {
-      modalContent.scrollTo({
+    const modal = document.getElementById('happySpaceModal');
+    if (modal) {
+      modal.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
