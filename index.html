@@ -23,10 +23,18 @@
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--white);
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f8 25%, #ffffff 50%, #ffeef3 75%, #ffffff 100%);
+    background-size: 400% 400%;
+    animation: gradientMove 20s ease infinite;
     color: var(--dark);
     overflow-x: hidden;
     cursor: none;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   /* CUSTOM CURSOR */
