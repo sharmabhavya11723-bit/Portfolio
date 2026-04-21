@@ -709,6 +709,448 @@
   }
   .project-link:hover { transform: rotate(45deg); }
 
+  /* CASE STUDY MODAL */
+  .case-study-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 40px 20px;
+  }
+  .case-study-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .modal-content {
+    background: white;
+    border-radius: 32px;
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+    animation: modalSlideIn 0.4s ease;
+  }
+  @keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: var(--pink-light);
+    color: var(--pink);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s;
+  }
+  .modal-close:hover {
+    background: var(--pink);
+    color: white;
+    transform: rotate(90deg);
+  }
+  .case-study-header {
+    padding: 60px 60px 40px;
+    background: linear-gradient(135deg, var(--pink-pale) 0%, white 100%);
+    border-radius: 32px 32px 0 0;
+  }
+  .case-study-meta {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--pink);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .case-study-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .case-study-subtitle {
+    font-size: 18px;
+    color: var(--gray);
+    max-width: 700px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .case-study-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,77,141,0.2);
+  }
+  .info-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+  .info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .case-study-body {
+    padding: 40px 60px 60px;
+  }
+  .case-section {
+    margin-bottom: 60px;
+  }
+  .case-section:last-child {
+    margin-bottom: 0;
+  }
+  .section-num {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--pink);
+    margin-bottom: 8px;
+  }
+  .case-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  .case-section h3 {
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .case-section > p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .overview-card {
+    padding: 28px;
+    background: var(--pink-pale);
+    border-radius: 20px;
+    border: 1px solid var(--pink-light);
+  }
+  .overview-num {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--pink);
+    margin-bottom: 12px;
+  }
+  .overview-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .overview-card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .research-col h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--pink-light);
+  }
+  .research-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .research-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .research-item strong {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .research-item p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .findings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .finding-card {
+    text-align: center;
+    padding: 32px 24px;
+    background: linear-gradient(135deg, var(--pink-pale), white);
+    border-radius: 20px;
+    border: 1px solid var(--pink-light);
+  }
+  .finding-percent {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--pink);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .finding-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .finding-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .personas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .persona-card {
+    padding: 32px;
+    background: white;
+    border-radius: 24px;
+    border: 2px solid var(--pink-light);
+    box-shadow: 0 4px 20px rgba(255,77,141,0.08);
+  }
+  .persona-avatar {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  .persona-card h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .persona-meta {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+  .persona-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--pink);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .persona-section {
+    margin-bottom: 16px;
+  }
+  .persona-section:last-child {
+    margin-bottom: 0;
+  }
+  .persona-section strong {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .persona-section p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .process-item {
+    padding: 28px;
+    background: var(--pink-pale);
+    border-radius: 20px;
+    border: 1px solid var(--pink-light);
+  }
+  .process-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .process-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .process-item p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .ia-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .ia-card {
+    padding: 24px;
+    background: var(--pink-pale);
+    border-radius: 16px;
+    border: 1px solid var(--pink-light);
+    text-align: center;
+  }
+  .ia-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  .ia-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .ia-card ul {
+    list-style: none;
+    text-align: left;
+  }
+  .ia-card li {
+    font-size: 12px;
+    color: var(--gray);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--pink-light);
+  }
+  .ia-card li:last-child {
+    border-bottom: none;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    padding: 32px;
+    background: white;
+    border-radius: 20px;
+    border: 2px solid var(--pink-light);
+    box-shadow: 0 4px 20px rgba(255,77,141,0.08);
+    transition: all 0.3s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(255,77,141,0.15);
+    border-color: var(--pink);
+  }
+  .feature-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+  .feature-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .feature-card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .testing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .testing-col {
+    padding: 32px;
+    border-radius: 20px;
+  }
+  .testing-col.success {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1px solid #86efac;
+  }
+  .testing-col.improvements {
+    background: linear-gradient(135deg, #fefce8, #fef9c3);
+    border: 1px solid #fde047;
+  }
+  .testing-col h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .testing-col ul {
+    list-style: none;
+  }
+  .testing-col li {
+    font-size: 14px;
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .testing-col li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+    font-weight: bold;
+  }
+  .case-section.conclusion {
+    text-align: center;
+    padding: 60px;
+    background: linear-gradient(135deg, var(--pink-pale), white);
+    border-radius: 24px;
+    margin-top: 40px;
+  }
+  .conclusion-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .conclusion-text p {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+  .designer-signature {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pink);
+    padding-top: 24px;
+    border-top: 1px solid var(--pink-light);
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    .case-study-info-grid { grid-template-columns: repeat(2, 1fr); }
+    .overview-grid { grid-template-columns: 1fr; }
+    .research-grid { grid-template-columns: 1fr; }
+    .findings-grid { grid-template-columns: repeat(2, 1fr); }
+    .personas-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    .ia-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: 1fr; }
+    .testing-grid { grid-template-columns: 1fr; }
+    .case-study-header, .case-study-body { padding: 40px 24px; }
+    .case-study-title { font-size: 32px; }
+  }
+
   /* SERVICES */
   .services-grid {
     display: grid;
@@ -1193,7 +1635,7 @@
           <span class="tool-chip">Voice UI</span>
           <span class="tool-chip">A11y</span>
         </div>
-        <a href="#" class="project-link">↗</a>
+        <a href="#" class="project-link" onclick="openHappySpaceModal(); return false;">↗</a>
       </div>
     </div>
 
@@ -1232,6 +1674,407 @@
     </div>
   </div>
 </section>
+
+<!-- HAPPY SPACE CASE STUDY MODAL -->
+<div id="happySpaceModal" class="case-study-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeHappySpaceModal()">&times;</button>
+    
+    <div class="case-study-header">
+      <div class="case-study-meta">UX Case Study · IXD262 Design Studio</div>
+      <h1 class="case-study-title">Happy Space</h1>
+      <p class="case-study-subtitle">An inclusive social platform empowering physically and sensory-disabled individuals to connect, learn, play, and build meaningful friendships.</p>
+      
+      <div class="case-study-info-grid">
+        <div class="info-item">
+          <div class="info-label">Designer</div>
+          <div class="info-value">Bhavya Sharma</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Student ID</div>
+          <div class="info-value">12318038</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Course</div>
+          <div class="info-value">IXD262</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Type</div>
+          <div class="info-value">Mobile App</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-study-body">
+      <!-- Overview -->
+      <section class="case-section">
+        <div class="section-num">01</div>
+        <h2>Overview</h2>
+        <h3>The challenge we set out to solve</h3>
+        <p>People with physical and sensory disabilities face significant social isolation. Mainstream platforms were not built with their needs in mind — leaving an entire community without a space to truly connect, grow, and thrive together.</p>
+        
+        <div class="overview-grid">
+          <div class="overview-card">
+            <div class="overview-num">01</div>
+            <h4>Objective</h4>
+            <p>Create an inclusive global platform where disabled individuals can connect, learn, play, and build meaningful friendships — fully accessible from day one.</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-num">02</div>
+            <h4>Problem Statement</h4>
+            <p>People with disabilities find it difficult to connect with peers in their community. Existing platforms lack the accessibility features and cultural safety they need.</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-num">03</div>
+            <h4>Target Users</h4>
+            <p>Physically disabled individuals (quadriplegic, amputee) and sensory-disabled people (deaf, blind, mute) who wish to connect with their community online.</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-num">04</div>
+            <h4>My Role</h4>
+            <p>Solo UX Designer — conducting primary & secondary research, creating personas, wireframes (lo-fi & hi-fi), affinity mapping, and usability testing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section class="case-section">
+        <div class="section-num">02</div>
+        <h2>Research</h2>
+        <h3>Listening before designing</h3>
+        <p>Primary research involved direct one-on-one interviews and manual survey forms with users. Secondary research mapped the competitive landscape and identified market opportunities.</p>
+        
+        <div class="research-grid">
+          <div class="research-col">
+            <h4>Primary Research</h4>
+            <div class="research-item">
+              <div class="research-icon">🗣️</div>
+              <div>
+                <strong>One-on-One Interviews</strong>
+                <p>Conducted in-depth conversations with physically and sensory disabled individuals to understand daily challenges, communication preferences, and unmet digital needs.</p>
+              </div>
+            </div>
+            <div class="research-item">
+              <div class="research-icon">📋</div>
+              <div>
+                <strong>Manual Survey Forms</strong>
+                <p>Distributed paper-based survey forms capturing quantitative data on social media usage, community connection difficulties, and accessibility requirements.</p>
+              </div>
+            </div>
+            <div class="research-item">
+              <div class="research-icon">🔬</div>
+              <div>
+                <strong>Insight Synthesis</strong>
+                <p>Empathy mapping with two distinct user archetypes — a community creator and a wheelchair-using college student — revealed contrasting but complementary needs.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="research-col">
+            <h4>Secondary Research</h4>
+            <div class="research-item">
+              <div class="research-icon">🏆</div>
+              <div>
+                <strong>Competitor Analysis</strong>
+                <p>Disaboom (direct) — social network for disabled people, founded 2007 but activity declined. Alvie — bridges isolation for people with disabilities. Dateability (indirect) — dating app for disabled users launched 2021.</p>
+              </div>
+            </div>
+            <div class="research-item">
+              <div class="research-icon">📊</div>
+              <div>
+                <strong>Market Breakdown</strong>
+                <p>Mobility impairment holds the largest market share (35–40%), followed by hearing (25–30%), vision (15–20%), and speech impairment (10–15%). Each segment has distinct assistive technology needs.</p>
+              </div>
+            </div>
+            <div class="research-item">
+              <div class="research-icon">🏛️</div>
+              <div>
+                <strong>Saksham Disability Resource</strong>
+                <p>Visited Saksham Resource Centre, dedicated to empowering students with visual impairments through academic excellence — provided real-world context for design decisions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Findings -->
+      <section class="case-section">
+        <div class="section-num">03</div>
+        <h2>Key Findings</h2>
+        <h3>What the data told us</h3>
+        
+        <div class="findings-grid">
+          <div class="finding-card">
+            <div class="finding-percent">60%</div>
+            <h4>Social Difficulty</h4>
+            <p>Experience trouble connecting with community members online</p>
+          </div>
+          <div class="finding-card">
+            <div class="finding-percent">80%</div>
+            <h4>Platform Need</h4>
+            <p>Believe a dedicated social platform would improve accessibility</p>
+          </div>
+          <div class="finding-card">
+            <div class="finding-percent">90%</div>
+            <h4>AI Accessibility</h4>
+            <p>Emphasized need for screen readers, captions, and sign language AI</p>
+          </div>
+          <div class="finding-card">
+            <div class="finding-percent">100%</div>
+            <h4>Hands-Free Nav</h4>
+            <p>Quadriplegic & amputee users require gesture-based, one-handed UI</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- User Personas -->
+      <section class="case-section">
+        <div class="section-num">04</div>
+        <h2>User Personas</h2>
+        <h3>Designing for real people</h3>
+        <p>Three personas emerged from research, each with distinct disabilities, communication styles, and platform needs — guiding every design decision.</p>
+        
+        <div class="personas-grid">
+          <div class="persona-card">
+            <div class="persona-avatar">👩</div>
+            <h4>Prachi Gupta</h4>
+            <div class="persona-meta">26 · Female · Blind since childhood</div>
+            <div class="persona-tag">Screen Reader User</div>
+            <div class="persona-section">
+              <strong>Challenges</strong>
+              <p>Non-accessible platforms, Missing image descriptions, Screen-reader unfriendly nav</p>
+            </div>
+            <div class="persona-section">
+              <strong>Needs</strong>
+              <p>AI alt-text for images, Screen-reader UI, Community building</p>
+            </div>
+            <div class="persona-section">
+              <strong>Goals</strong>
+              <p>Connect with shared experiences, Access inclusive content</p>
+            </div>
+          </div>
+          
+          <div class="persona-card">
+            <div class="persona-avatar">👨</div>
+            <h4>Aditya Singh</h4>
+            <div class="persona-meta">35 · Male · Quadriplegic</div>
+            <div class="persona-tag">Voice & Eye-Tracking User</div>
+            <div class="persona-section">
+              <strong>Challenges</strong>
+              <p>Manual input required, No hands-free mode, Limited motor control</p>
+            </div>
+            <div class="persona-section">
+              <strong>Needs</strong>
+              <p>Voice commands, Predictive text AI, Gesture-based nav</p>
+            </div>
+            <div class="persona-section">
+              <strong>Goals</strong>
+              <p>Independent engagement, Share without assistance</p>
+            </div>
+          </div>
+          
+          <div class="persona-card">
+            <div class="persona-avatar">👩‍🦱</div>
+            <h4>Neha Sharma</h4>
+            <div class="persona-meta">24 · Female · Born Deaf</div>
+            <div class="persona-tag">Sign Language & Caption User</div>
+            <div class="persona-section">
+              <strong>Challenges</strong>
+              <p>Inaccurate captions, Limited sign language support, Communication barriers</p>
+            </div>
+            <div class="persona-section">
+              <strong>Needs</strong>
+              <p>AI-accurate captions, Sign language content, Visual tools</p>
+            </div>
+            <div class="persona-section">
+              <strong>Goals</strong>
+              <p>Accessible content creation, Barrier-free conversation</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Design Process -->
+      <section class="case-section">
+        <div class="section-num">05</div>
+        <h2>Design Process</h2>
+        <h3>From insights to interface</h3>
+        
+        <div class="process-grid">
+          <div class="process-item">
+            <div class="process-icon">🗺️</div>
+            <h4>Empathy Mapping</h4>
+            <p>Built empathy maps for two key user types: a community creator advocating for disabled individuals, and a wheelchair-using college student navigating inaccessible digital and physical spaces. Revealed emotional pain points beyond task friction.</p>
+          </div>
+          <div class="process-item">
+            <div class="process-icon">🧭</div>
+            <h4>Current State Journey Map</h4>
+            <p>Mapped the user's existing experience from social isolation (exposition) through failed connection attempts (rising action) to the climax of frustration — and the desired resolution of finding a meaningful community platform.</p>
+          </div>
+          <div class="process-item">
+            <div class="process-icon">🧩</div>
+            <h4>Brainstorming & Affinity Mapping</h4>
+            <p>Generated 25+ ideas across sticky-note brainstorming sessions. Ideas were grouped into four core pillars: Community & Social Features, Motivation & Entertainment, Education & Skills, and Medicine & Health Support.</p>
+          </div>
+          <div class="process-item">
+            <div class="process-icon">🏗️</div>
+            <h4>Information Architecture</h4>
+            <p>Structured a hierarchical IA from Splash Screen → Onboarding → Main Screen, branching into four main sections. Each section was further broken into accessible sub-features prioritized by user need frequency.</p>
+          </div>
+          <div class="process-item">
+            <div class="process-icon">✏️</div>
+            <h4>Lo-Fi Wireframes</h4>
+            <p>Created grayscale wireframes for key screens: splash, sign-up flow, accessibility preference selector, home feed, community tab, and notes section. Focused on layout and content hierarchy without visual distraction.</p>
+          </div>
+          <div class="process-item">
+            <div class="process-icon">🎨</div>
+            <h4>Hi-Fi Prototypes</h4>
+            <p>Elevated designs with a warm, pastel-forward visual language. Key screens included an accessibility onboarding flow (one-hand layout, voice control, large buttons), a personalized home feed, and a structured notes system — all matching the "Happy Space" brand ethos.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Information Architecture -->
+      <section class="case-section">
+        <div class="section-num">06</div>
+        <h2>Information Architecture</h2>
+        <h3>Four pillars of Happy Space</h3>
+        <p>Splash Screen → Onboarding → Main Screen</p>
+        
+        <div class="ia-grid">
+          <div class="ia-card">
+            <div class="ia-icon">🏠</div>
+            <h4>Main Screen</h4>
+          </div>
+          <div class="ia-card">
+            <div class="ia-icon">👥</div>
+            <h4>Community</h4>
+            <ul>
+              <li>Social Circles</li>
+              <li>Gaming</li>
+              <li>Events (Drama, Storytelling)</li>
+              <li>Chatroom</li>
+              <li>Success Stories</li>
+            </ul>
+          </div>
+          <div class="ia-card">
+            <div class="ia-icon">📚</div>
+            <h4>Education & Skills</h4>
+            <ul>
+              <li>Art</li>
+              <li>Knowledge & Fun</li>
+              <li>Notes (Study Hub)</li>
+              <li>Mentorship</li>
+            </ul>
+          </div>
+          <div class="ia-card">
+            <div class="ia-icon">🎮</div>
+            <h4>Motivation & Entertainment</h4>
+            <ul>
+              <li>Inclusive Entertainment</li>
+              <li>Talent Contests</li>
+              <li>Sports Tutorials</li>
+              <li>Easy Games (Music, Acting)</li>
+            </ul>
+          </div>
+          <div class="ia-card">
+            <div class="ia-icon">💊</div>
+            <h4>Medicine & Health</h4>
+            <ul>
+              <li>Online Consultations</li>
+              <li>Guided Exercises</li>
+              <li>Therapy</li>
+              <li>Quick Help</li>
+              <li>Medication Reminder</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Features -->
+      <section class="case-section">
+        <div class="section-num">07</div>
+        <h2>Core Features</h2>
+        <h3>Designed for every ability</h3>
+        <p>Each feature was validated against user research — every interaction mode, every button size, every AI feature was chosen because real users said they needed it.</p>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎙️</div>
+            <h4>Voice Control & Speech-to-Text</h4>
+            <p>Hands-free navigation and AI-powered speech-to-text for users with motor disabilities like quadriplegia or amputees who cannot use standard touch input.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👁️</div>
+            <h4>Screen Reader & Alt Text AI</h4>
+            <p>Full screen reader compatibility with AI-generated alt text for all images and videos, ensuring visually impaired users have equal access to all content.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🤟</div>
+            <h4>Sign Language & Caption Support</h4>
+            <p>AI-accurate captioning for video content and dedicated tools for creating and sharing sign language videos — built for and with the Deaf community.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📐</div>
+            <h4>Accessible UI Customisation</h4>
+            <p>Users choose one-handed layout, large button mode, or voice-only navigation during onboarding. High contrast mode and adjustable text size available at all times.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🫂</div>
+            <h4>Friend Finder & Social Circles</h4>
+            <p>Connect with people who share similar disabilities and experiences. Gamified challenges and community events encourage meaningful interaction beyond passive scrolling.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🚨</div>
+            <h4>Quick Help & Health Support</h4>
+            <p>Emergency SOS button, telemedicine consultations, guided mobility exercises, medication reminders, and mental health chat therapy — healthcare access at your fingertips.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Usability Testing -->
+      <section class="case-section">
+        <div class="section-num">08</div>
+        <h2>Usability Testing</h2>
+        <h3>Testing revealed strengths and gaps</h3>
+        <p>Usability testing assessed the hi-fi prototypes across four key dimensions: interface clarity, navigation flow, accessibility features, and emotional appeal.</p>
+        
+        <div class="testing-grid">
+          <div class="testing-col success">
+            <h4>✅ What worked well</h4>
+            <ul>
+              <li>Clean, organized layout with large, well-spaced buttons suitable for motor accessibility</li>
+              <li>Logical navigation flow from splash screen through to content</li>
+              <li>Cheerful, cartoon-style design creates emotional uplift for users</li>
+              <li>Visual hierarchy is clearly present across all screens (titles, subheadings)</li>
+              <li>Tab navigation provides clear access to Community, Entertainment, and more</li>
+            </ul>
+          </div>
+          <div class="testing-col improvements">
+            <h4>⚠️ Areas for improvement</h4>
+            <ul>
+              <li>Text-to-speech and voice navigation not visually confirmed in designs</li>
+              <li>Some text elements may lack sufficient color contrast for low vision users</li>
+              <li>Missing visual cues for haptic feedback and voice prompts for visually impaired</li>
+              <li>High contrast mode and dynamic font scaling should be added</li>
+              <li>Need more community interaction elements like "Join a Friend Group" prompts</li>
+              <li>User personalization features (avatars, named voice assistants) should be included</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="case-section conclusion">
+        <div class="conclusion-text">
+          <h3>Every voice, every talent, every smile matters.</h3>
+          <p>Happy Space is designed with the belief that disability is not an inability — and that with the right digital environment, every individual can connect, grow, and thrive.</p>
+          <div class="designer-signature">Bhavya Sharma · 12318038 · IXD262 Design Studio</div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
 
 <!-- SERVICES -->
 <section id="services">
@@ -1474,6 +2317,33 @@
   skillFills.forEach(fill => {
     fill.style.width = '0%';
     skillObserver.observe(fill);
+  });
+
+  // Happy Space Modal Functions
+  function openHappySpaceModal() {
+    const modal = document.getElementById('happySpaceModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeHappySpaceModal() {
+    const modal = document.getElementById('happySpaceModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal on backdrop click
+  document.getElementById('happySpaceModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeHappySpaceModal();
+    }
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeHappySpaceModal();
+    }
   });
 </script>
 </body>
