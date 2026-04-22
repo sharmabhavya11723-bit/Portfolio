@@ -152,21 +152,42 @@
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255,77,141,0.08);
     box-sizing: border-box;
-    transform: translateY(-100%);
+    transform: translateY(0);
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  nav.visible {
-    transform: translateY(0);
+  .nav-trigger {
+    display: none;
   }
 
-  .nav-trigger {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    z-index: 99;
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 101;
+  }
+
+  .mobile-menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 
   .logo {
@@ -1427,8 +1448,190 @@
     transform: scale(1.2) rotate(10deg);
   }
 
-  /* Responsive for conclusion */
+  /* COMPREHENSIVE RESPONSIVE STYLES */
+  @media (max-width: 1024px) {
+    nav {
+      padding: 12px 40px;
+    }
+    .hero-content h1 {
+      font-size: 56px;
+    }
+    .section-title {
+      font-size: 42px;
+    }
+  }
+
   @media (max-width: 768px) {
+    /* Mobile Navigation */
+    nav {
+      padding: 12px 20px;
+    }
+
+    .mobile-menu-toggle {
+      display: block;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.98);
+      flex-direction: column;
+      gap: 0;
+      padding: 20px;
+      transform: translateY(-150%);
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .nav-links li {
+      border-bottom: 1px solid var(--pink-light);
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 16px 0;
+      font-size: 18px;
+    }
+
+    /* Hero Section Mobile */
+    .hero {
+      min-height: auto;
+      padding: 120px 20px 60px;
+    }
+
+    .hero-content h1 {
+      font-size: 40px;
+      line-height: 1.1;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      max-width: 100%;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .hero-stats {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      right: auto;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .stat-card {
+      padding: 16px 20px;
+    }
+
+    .stat-card img {
+      height: 50px !important;
+    }
+
+    .stat-num {
+      font-size: 24px;
+    }
+
+    /* Section Headers Mobile */
+    .section-tag {
+      font-size: 11px;
+    }
+
+    .section-title {
+      font-size: 32px;
+    }
+
+    /* About Section Mobile */
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .about-highlights {
+      grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tools-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Projects Mobile */
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-thumb {
+      height: 200px;
+    }
+
+    /* Services Mobile */
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card {
+      padding: 30px;
+    }
+
+    .experience-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Contact Mobile */
+    .contact-section h2 {
+      font-size: 32px;
+    }
+
+    .contact-badges {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-badge {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+
+    /* Footer Mobile */
+    footer {
+      padding: 40px 20px;
+      gap: 24px;
+    }
+
+    .footer-logo img {
+      height: 50px !important;
+    }
+
+    .social-links {
+      gap: 16px;
+    }
+
+    /* Case Study Mobile */
     .case-study-mockup img {
       max-height: 250px;
     }
@@ -1768,15 +1971,17 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV TRIGGER (invisible hover area) -->
-<div class="nav-trigger" id="navTrigger"></div>
-
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">
     <img src="Portfolio/mylogo.png" alt="Bhavya Sharma" style="height: 60px; width: auto; max-height: 60px;">
   </a>
-  <ul class="nav-links">
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Work</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -2716,51 +2921,21 @@
     skillObserver.observe(fill);
   });
 
-  // macOS-style navbar hover behavior
-  const nav = document.querySelector('nav');
-  const navTrigger = document.getElementById('navTrigger');
-  let navTimeout;
-  let lastScrollY = 0;
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const navLinks = document.getElementById('navLinks');
 
-  function showNav() {
-    nav.classList.add('visible');
-    clearTimeout(navTimeout);
-  }
-
-  function hideNav() {
-    navTimeout = setTimeout(() => {
-      nav.classList.remove('visible');
-    }, 300);
-  }
-
-  // Show navbar at top of page, hide when scrolling down
-  function handleScroll() {
-    const scrollY = window.scrollY;
-
-    if (scrollY < 100) {
-      // At top of page - show navbar
-      showNav();
-    } else {
-      // Scrolled down - hide navbar
-      nav.classList.remove('visible');
-    }
-
-    lastScrollY = scrollY;
-  }
-
-  // Initial check
-  handleScroll();
-
-  // Listen for scroll
-  window.addEventListener('scroll', handleScroll, { passive: true });
-
-  navTrigger.addEventListener('mouseenter', showNav);
-  nav.addEventListener('mouseenter', showNav);
-  navTrigger.addEventListener('mouseleave', () => {
-    if (window.scrollY >= 100) hideNav();
+  mobileMenuToggle.addEventListener('click', () => {
+    mobileMenuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
   });
-  nav.addEventListener('mouseleave', () => {
-    if (window.scrollY >= 100) hideNav();
+
+  // Close mobile menu when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
   });
 
   // Happy Space Modal Functions
