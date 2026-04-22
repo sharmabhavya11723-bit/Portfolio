@@ -200,8 +200,22 @@
     align-items: center;
     height: 100%;
     letter-spacing: -0.5px;
+    min-width: 60px;
   }
   .logo span { color: var(--pink); }
+
+  .logo img {
+    display: block;
+    object-fit: contain;
+    background: transparent;
+  }
+
+  .logo-fallback {
+    display: none;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--dark);
+  }
 
   .nav-links {
     display: flex;
@@ -1636,24 +1650,21 @@
       max-height: 250px;
     }
 
-    /* Small flowers mobile - hide most, keep a few tiny ones */
+    /* Tiny flowers mobile */
     .cute-flower {
-      width: 15px;
-      height: 15px;
-      opacity: 0.06;
+      width: 8px !important;
+      height: 8px !important;
+      opacity: 0.1;
     }
 
-    .flower-1,
-    .flower-3,
-    .flower-5,
-    .flower-7 {
-      display: none;
-    }
-
-    .flower-2 { top: 20%; right: 2%; }
-    .flower-4 { top: 50%; right: 2%; }
-    .flower-6 { top: 80%; right: 3%; }
-    .flower-8 { top: 65%; right: 4%; }
+    .flower-1 { top: 300px !important; }
+    .flower-2 { top: 800px !important; }
+    .flower-3 { top: 1400px !important; display: block !important; }
+    .flower-4 { top: 2000px !important; }
+    .flower-5 { top: 2600px !important; display: block !important; }
+    .flower-6 { top: 3200px !important; }
+    .flower-7 { display: none !important; }
+    .flower-8 { display: none !important; }
 
     .conclusion-content {
       flex-direction: column;
@@ -1668,17 +1679,52 @@
       grid-template-columns: 1fr;
     }
 
-    .case-study-info-grid { grid-template-columns: repeat(2, 1fr); }
-    .overview-grid { grid-template-columns: 1fr; }
-    .research-grid { grid-template-columns: 1fr; }
-    .findings-grid { grid-template-columns: repeat(2, 1fr); }
-    .personas-grid { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: 1fr; }
-    .ia-grid { grid-template-columns: repeat(2, 1fr); }
-    .features-grid { grid-template-columns: 1fr; }
-    .testing-grid { grid-template-columns: 1fr; }
-    .case-study-header, .case-study-body { padding: 40px 24px; }
-    .case-study-title { font-size: 32px; }
+    .case-study-header, .case-study-body {
+      padding: 40px 24px;
+    }
+
+    .case-study-title {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 32px;
+    }
+
+    .section-title {
+      font-size: 28px;
+    }
+
+    .stat-card {
+      padding: 12px 16px;
+    }
+
+    .stat-card img {
+      height: 40px !important;
+    }
+
+    .stat-num {
+      font-size: 20px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+    }
+
+    .logo img {
+      height: 50px !important;
+      max-height: 50px !important;
+    }
+
+    nav {
+      height: 70px;
+    }
+
+    .nav-links {
+      top: 70px;
+    }
   }
 
   /* SERVICES */
@@ -1833,47 +1879,42 @@
     background: #ff2d76;
   }
 
-  /* CUTE SMALL FLOWER DECORATIONS */
+  /* TINY PINK FLOWERS - SCROLL WITH PAGE */
   .flower-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: relative;
+    width: 100%;
+    height: 0;
     pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
+    z-index: 1;
   }
 
   .cute-flower {
     position: absolute;
     color: var(--pink);
-    opacity: 0.12;
-    width: 30px;
-    height: 30px;
-    animation: softBlossom 4s ease-in-out infinite;
-    will-change: transform, opacity;
+    fill: var(--pink);
+    opacity: 0.15;
+    width: 12px;
+    height: 12px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: auto;
+    cursor: pointer;
   }
 
-  .flower-1 { top: 15%; left: 3%; animation-delay: 0s; }
-  .flower-2 { top: 25%; right: 5%; animation-delay: 0.5s; width: 25px; height: 25px; }
-  .flower-3 { top: 45%; left: 2%; animation-delay: 1s; width: 20px; height: 20px; }
-  .flower-4 { top: 60%; right: 3%; animation-delay: 1.5s; width: 28px; height: 28px; }
-  .flower-5 { top: 75%; left: 5%; animation-delay: 2s; width: 22px; height: 22px; }
-  .flower-6 { top: 85%; right: 4%; animation-delay: 2.5s; width: 26px; height: 26px; }
-  .flower-7 { top: 35%; left: 6%; animation-delay: 3s; width: 24px; height: 24px; }
-  .flower-8 { top: 55%; right: 6%; animation-delay: 3.5s; width: 20px; height: 20px; }
-
-  @keyframes softBlossom {
-    0%, 100% {
-      transform: scale(0.8) rotate(-5deg);
-      opacity: 0.08;
-    }
-    50% {
-      transform: scale(1.1) rotate(5deg);
-      opacity: 0.18;
-    }
+  .cute-flower:hover {
+    transform: scale(2) rotate(15deg);
+    opacity: 0.6;
+    filter: drop-shadow(0 0 8px rgba(255, 77, 141, 0.5));
   }
+
+  /* Flowers positioned at different scroll heights (in px) */
+  .flower-1 { top: 200px; left: 2%; }
+  .flower-2 { top: 600px; right: 3%; width: 10px; height: 10px; }
+  .flower-3 { top: 1200px; left: 1%; width: 8px; height: 8px; }
+  .flower-4 { top: 1800px; right: 2%; width: 14px; height: 14px; }
+  .flower-5 { top: 2400px; left: 3%; width: 9px; height: 9px; }
+  .flower-6 { top: 3000px; right: 2%; width: 11px; height: 11px; }
+  .flower-7 { top: 3600px; left: 2%; width: 10px; height: 10px; }
+  .flower-8 { top: 4200px; right: 3%; width: 8px; height: 8px; }
 
   .flower-svg {
     width: 100%;
@@ -2096,7 +2137,8 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">
-    <img src="Portfolio/mylogo.png" alt="Bhavya Sharma" style="height: 60px; width: auto; max-height: 60px;">
+    <img src="Portfolio/mylogo.png" alt="Bhavya Sharma" style="height: 60px; width: auto; max-height: 60px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-fallback">BS</span>
   </a>
   <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
     <span></span>
