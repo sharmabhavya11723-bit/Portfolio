@@ -1939,8 +1939,14 @@
     gap: 10px;
     color: rgba(255,255,255,0.4);
     font-size: 13px;
+    transition: all 0.3s ease;
   }
   .contact-badge span { font-size: 16px; }
+
+  a.contact-badge:hover {
+    color: var(--pink);
+    transform: translateY(-2px);
+  }
 
   /* FOOTER */
   footer {
@@ -2898,7 +2904,7 @@
       <div class="exp-date">Volunteer</div>
       <div>
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-          <img src="Portfolio/Inamigos logo.svg" alt="Inamigos Foundation" style="height: 60px; width: auto;">
+          <img src="Portfolio/Inamigos logo.webp" alt="Inamigos Foundation" style="height: 60px; width: auto; border-radius: 8px;">
           <div>
             <div class="exp-role">Graphic Designer</div>
             <div class="exp-company">InAmigos Foundation</div>
@@ -2956,19 +2962,19 @@
   <div class="section-title">Have an awesome<br>project idea? <em>Let's talk.</em></div>
   <p>I'm always open to discussing new projects, creative ideas, or opportunities to collaborate.</p>
 
-  <div class="contact-form">
+  <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
     <div class="form-row">
-      <input type="text" class="form-field" placeholder="Your Name">
-      <input type="email" class="form-field" placeholder="Email Address">
+      <input type="text" class="form-field" id="senderName" placeholder="Your Name" required>
+      <input type="email" class="form-field" id="senderEmail" placeholder="Email Address" required>
     </div>
-    <input type="text" class="form-field" placeholder="Project Type" style="margin-bottom:16px;width:100%">
-    <textarea class="form-field" placeholder="Tell me about your project..."></textarea>
-    <button class="btn-submit">Send Message ↗</button>
-  </div>
+    <input type="text" class="form-field" id="projectType" placeholder="Project Type" style="margin-bottom:16px;width:100%">
+    <textarea class="form-field" id="projectMessage" placeholder="Tell me about your project..." required></textarea>
+    <button type="submit" class="btn-submit">Send Message ↗</button>
+  </form>
 
   <div class="contact-badges">
-    <div class="contact-badge"><span>✉️</span> bhavyasharma4464@gmail.com</div>
-    <div class="contact-badge"><span>📞</span> +91 7217740725</div>
+    <a href="mailto:bhavyasharma4464@gmail.com" class="contact-badge" style="text-decoration:none;"><span>✉️</span> bhavyasharma4464@gmail.com</a>
+    <a href="tel:+917217740725" class="contact-badge" style="text-decoration:none;"><span>📞</span> +91 7217740725</a>
     <div class="contact-badge"><span>📍</span> Punjab, India</div>
   </div>
 </section>
@@ -3102,6 +3108,40 @@
       navLinks.classList.remove('active');
     });
   });
+
+  // Contact Form Handler
+  function handleContactSubmit(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('senderName').value;
+    const email = document.getElementById('senderEmail').value;
+    const projectType = document.getElementById('projectType').value;
+    const message = document.getElementById('projectMessage').value;
+
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Project Inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `Project Type: ${projectType || 'Not specified'}\n\n` +
+      `Message:\n${message}`
+    );
+
+    // Open email client
+    window.location.href = `mailto:bhavyasharma4464@gmail.com?subject=${subject}&body=${body}`;
+
+    // Show success message
+    const btn = document.querySelector('.btn-submit');
+    const originalText = btn.textContent;
+    btn.textContent = 'Opening Email...';
+    btn.style.background = '#4CAF50';
+
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      document.getElementById('contactForm').reset();
+    }, 3000);
+  }
 
   // Happy Space Modal Functions
   function openHappySpaceModal() {
