@@ -30,17 +30,22 @@
     cursor: none;
   }
 
-  /* CUSTOM CURSOR */
+  /* CUSTOM CURSOR - OPTIMIZED FOR PERFORMANCE */
   .cursor {
     width: 20px; height: 20px;
     background: transparent;
     border: 2px solid var(--pink);
     border-radius: 50%;
     position: fixed;
-    top: 0; left: 0;
     pointer-events: none;
     z-index: 9999;
-    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform;
+    transition: border-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+  }
+  .cursor.hover {
+    border-color: #FF1493;
+    width: 26px;
+    height: 26px;
   }
   .cursor::after {
     content: '';
@@ -50,7 +55,12 @@
     width: 6px; height: 6px;
     background: var(--pink);
     border-radius: 50%;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, width 0.2s ease, height 0.2s ease;
+  }
+  .cursor.hover::after {
+    background: #FF1493;
+    width: 8px;
+    height: 8px;
   }
   .cursor-ring {
     width: 40px;
@@ -60,19 +70,21 @@
     position: fixed;
     pointer-events: none;
     z-index: 9998;
-    transition: all 0.15s ease-out;
-    will-change: transform, width, height;
+    opacity: 0.3;
+    will-change: transform;
+    transition: border-color 0.2s ease, opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
   }
-  .cursor-trail {
-    width: 6px; height: 6px;
-    background: var(--pink);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9997;
-    opacity: 0;
-    animation: trailFade 1s ease-out forwards;
+  .cursor-ring.hover {
+    border-color: #FF1493;
+    opacity: 0.6;
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Hide custom cursor on mobile */
+  @media (max-width: 768px) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
   }
 
   @keyframes cursorMorph {
@@ -1649,31 +1661,23 @@
       max-height: 250px;
     }
 
-    /* Mobile flowers - smaller and fewer with smooth animations */
+    /* Mobile side flowers - smaller and fewer */
     .magic-flower {
-      width: 20px !important;
-      height: 20px !important;
-      opacity: 0.25;
+      width: 18px !important;
+      height: 18px !important;
+      opacity: 0.15;
     }
 
-    /* Show only 6 flowers on mobile */
-    .fl-l2, .fl-l4, .fl-l6 { display: block !important; left: 1% !important; }
-    .fl-r2, .fl-r4, .fl-r6 { display: block !important; right: 1% !important; }
-    .fl-l1, .fl-l3, .fl-l5, .fl-l7, .fl-l8, .fl-l9, .fl-l10, .fl-l11, .fl-l12, .fl-l13, .fl-l14, .fl-l15,
-    .fl-r1, .fl-r3, .fl-r5, .fl-r7, .fl-r8, .fl-r9, .fl-r10, .fl-r11, .fl-r12, .fl-r13, .fl-r14, .fl-r15 { display: none !important; }
+    /* Show only 4 side flowers on mobile */
+    .fl-l1, .fl-l3 { display: block !important; left: 1% !important; }
+    .fl-r1, .fl-r3 { display: block !important; right: 1% !important; }
+    .fl-l2, .fl-l4, .fl-l5, .fl-l6,
+    .fl-r2, .fl-r4, .fl-r5, .fl-r6 { display: none !important; }
 
-    .fl-l2 { top: 400px !important; }
-    .fl-l2 img { animation-delay: 0s; }
-    .fl-l4 { top: 1200px !important; }
-    .fl-l4 img { animation-delay: 1s; }
-    .fl-l6 { top: 2000px !important; }
-    .fl-l6 img { animation-delay: 2s; }
-    .fl-r2 { top: 800px !important; }
-    .fl-r2 img { animation-delay: 0.5s; }
-    .fl-r4 { top: 1600px !important; }
-    .fl-r4 img { animation-delay: 1.5s; }
-    .fl-r6 { top: 2400px !important; }
-    .fl-r6 img { animation-delay: 2.5s; }
+    .fl-l1 { top: 300px !important; }
+    .fl-l3 { top: 1500px !important; }
+    .fl-r1 { top: 600px !important; }
+    .fl-r3 { top: 1800px !important; }
 
     .conclusion-content {
       flex-direction: column;
@@ -1735,25 +1739,22 @@
       top: 70px;
     }
 
-    /* Hide most center flowers on mobile, keep only 4 */
+    /* Center flowers mobile - keep 4 */
     .center-flowers {
-      height: 800px;
+      height: 700px;
     }
     .center-flower {
-      width: 15px !important;
-      height: 15px !important;
-      opacity: 0.12;
+      width: 14px !important;
+      height: 14px !important;
+      opacity: 0.1;
     }
-    .cf-1, .cf-4, .cf-7, .cf-10 {
-      display: block !important;
-    }
-    .cf-2, .cf-3, .cf-5, .cf-6, .cf-8, .cf-9, .cf-11, .cf-12 {
-      display: none !important;
-    }
-    .cf-1 { top: 120px; left: 10% !important; }
-    .cf-4 { top: 300px; left: 80% !important; }
-    .cf-7 { top: 500px; left: 15% !important; }
-    .cf-10 { top: 650px; left: 75% !important; }
+    .cf-1, .cf-3 { display: block !important; left: 5% !important; }
+    .cf-2, .cf-4 { display: block !important; left: 85% !important; }
+    .cf-5, .cf-6 { display: none !important; }
+    .cf-1 { top: 150px !important; }
+    .cf-2 { top: 300px !important; }
+    .cf-3 { top: 450px !important; }
+    .cf-4 { top: 600px !important; }
   }
 
   /* SERVICES */
@@ -1908,7 +1909,7 @@
     background: #ff2d76;
   }
 
-  /* MAGICAL FLOWER GARDEN - SMOOTH BLOOMING MICRO-ANIMATIONS */
+  /* SIDE FLOWERS - OPTIMIZED (12 flowers) */
   .flower-garden {
     position: absolute;
     top: 0;
@@ -1922,147 +1923,84 @@
 
   .magic-flower {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    opacity: 0.2;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 32px;
+    height: 32px;
+    opacity: 0.18;
+    transition: opacity 0.3s ease;
     pointer-events: auto;
     cursor: pointer;
-    filter: drop-shadow(0 2px 4px rgba(255, 77, 141, 0.15));
-    will-change: transform, opacity;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
   }
 
   .magic-flower img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    animation: microSway 5s ease-in-out infinite;
+    animation: sideSway 6s ease-in-out infinite;
   }
 
-  /* Individual flower positions with staggered sway delays */
-  .fl-l1 { top: 150px; left: 1%; width: 35px; height: 35px; }
+  /* Left side flowers (6) with staggered positions */
+  .fl-l1 { top: 200px; left: 1%; width: 30px; height: 30px; }
   .fl-l1 img { animation-delay: 0s; }
-  .fl-l2 { top: 400px; left: 3%; width: 25px; height: 25px; }
-  .fl-l2 img { animation-delay: 0.3s; }
-  .fl-l3 { top: 700px; left: 0.5%; width: 45px; height: 45px; }
-  .fl-l3 img { animation-delay: 0.6s; }
-  .fl-l4 { top: 1000px; left: 4%; width: 30px; height: 30px; }
-  .fl-l4 img { animation-delay: 0.9s; }
-  .fl-l5 { top: 1300px; left: 1.5%; width: 38px; height: 38px; }
-  .fl-l5 img { animation-delay: 1.2s; }
-  .fl-l6 { top: 1600px; left: 5%; width: 28px; height: 28px; }
-  .fl-l6 img { animation-delay: 1.5s; }
-  .fl-l7 { top: 1900px; left: 2%; width: 42px; height: 42px; }
-  .fl-l7 img { animation-delay: 1.8s; }
-  .fl-l8 { top: 2200px; left: 3.5%; width: 32px; height: 32px; }
-  .fl-l8 img { animation-delay: 2.1s; }
-  .fl-l9 { top: 2500px; left: 0.8%; width: 36px; height: 36px; }
-  .fl-l9 img { animation-delay: 2.4s; }
-  .fl-l10 { top: 2800px; left: 4.5%; width: 26px; height: 26px; }
-  .fl-l10 img { animation-delay: 2.7s; }
-  .fl-l11 { top: 3100px; left: 2.5%; width: 40px; height: 40px; }
-  .fl-l11 img { animation-delay: 3s; }
-  .fl-l12 { top: 3400px; left: 1%; width: 28px; height: 28px; }
-  .fl-l12 img { animation-delay: 3.3s; }
-  .fl-l13 { top: 3700px; left: 5%; width: 34px; height: 34px; }
-  .fl-l13 img { animation-delay: 3.6s; }
-  .fl-l14 { top: 4000px; left: 2%; width: 30px; height: 30px; }
-  .fl-l14 img { animation-delay: 3.9s; }
-  .fl-l15 { top: 4300px; left: 3%; width: 38px; height: 38px; }
-  .fl-l15 img { animation-delay: 4.2s; }
+  .fl-l2 { top: 600px; left: 2%; width: 25px; height: 25px; }
+  .fl-l2 img { animation-delay: 1s; }
+  .fl-l3 { top: 1200px; left: 0.5%; width: 35px; height: 35px; }
+  .fl-l3 img { animation-delay: 2s; }
+  .fl-l4 { top: 2000px; left: 3%; width: 28px; height: 28px; }
+  .fl-l4 img { animation-delay: 3s; }
+  .fl-l5 { top: 2800px; left: 1%; width: 32px; height: 32px; }
+  .fl-l5 img { animation-delay: 4s; }
+  .fl-l6 { top: 3800px; left: 2.5%; width: 26px; height: 26px; }
+  .fl-l6 img { animation-delay: 5s; }
 
-  /* Right side flowers */
-  .fl-r1 { top: 200px; right: 1%; width: 38px; height: 38px; }
-  .fl-r1 img { animation-delay: 0.15s; }
-  .fl-r2 { top: 500px; right: 4%; width: 28px; height: 28px; }
-  .fl-r2 img { animation-delay: 0.45s; }
-  .fl-r3 { top: 800px; right: 2%; width: 44px; height: 44px; }
-  .fl-r3 img { animation-delay: 0.75s; }
-  .fl-r4 { top: 1100px; right: 5%; width: 32px; height: 32px; }
-  .fl-r4 img { animation-delay: 1.05s; }
-  .fl-r5 { top: 1400px; right: 1.5%; width: 36px; height: 36px; }
-  .fl-r5 img { animation-delay: 1.35s; }
-  .fl-r6 { top: 1700px; right: 3.5%; width: 26px; height: 26px; }
-  .fl-r6 img { animation-delay: 1.65s; }
-  .fl-r7 { top: 2000px; right: 0.5%; width: 40px; height: 40px; }
-  .fl-r7 img { animation-delay: 1.95s; }
-  .fl-r8 { top: 2300px; right: 4%; width: 34px; height: 34px; }
-  .fl-r8 img { animation-delay: 2.25s; }
-  .fl-r9 { top: 2600px; right: 2.5%; width: 30px; height: 30px; }
-  .fl-r9 img { animation-delay: 2.55s; }
-  .fl-r10 { top: 2900px; right: 5%; width: 42px; height: 42px; }
-  .fl-r10 img { animation-delay: 2.85s; }
-  .fl-r11 { top: 3200px; right: 1%; width: 28px; height: 28px; }
-  .fl-r11 img { animation-delay: 3.15s; }
-  .fl-r12 { top: 3500px; right: 4%; width: 36px; height: 36px; }
-  .fl-r12 img { animation-delay: 3.45s; }
-  .fl-r13 { top: 3800px; right: 3%; width: 32px; height: 32px; }
-  .fl-r13 img { animation-delay: 3.75s; }
-  .fl-r14 { top: 4100px; right: 1.5%; width: 40px; height: 40px; }
-  .fl-r14 img { animation-delay: 4.05s; }
-  .fl-r15 { top: 4400px; right: 4.5%; width: 26px; height: 26px; }
-  .fl-r15 img { animation-delay: 4.35s; }
+  /* Right side flowers (6) */
+  .fl-r1 { top: 300px; right: 1%; width: 32px; height: 32px; }
+  .fl-r1 img { animation-delay: 0.5s; }
+  .fl-r2 { top: 800px; right: 2%; width: 28px; height: 28px; }
+  .fl-r2 img { animation-delay: 1.5s; }
+  .fl-r3 { top: 1500px; right: 0.5%; width: 36px; height: 36px; }
+  .fl-r3 img { animation-delay: 2.5s; }
+  .fl-r4 { top: 2400px; right: 3%; width: 30px; height: 30px; }
+  .fl-r4 img { animation-delay: 3.5s; }
+  .fl-r5 { top: 3200px; right: 1%; width: 34px; height: 34px; }
+  .fl-r5 img { animation-delay: 4.5s; }
+  .fl-r6 { top: 4200px; right: 2%; width: 28px; height: 28px; }
+  .fl-r6 img { animation-delay: 5.5s; }
 
-  /* Base micro sway animation - subtle breathing */
-  @keyframes microSway {
-    0%, 100% { transform: rotate(-2deg) scale(1); }
-    50% { transform: rotate(2deg) scale(1.02); }
+  /* Single reusable sway animation */
+  @keyframes sideSway {
+    0%, 100% { transform: rotate(-3deg) scale(1); }
+    50% { transform: rotate(3deg) scale(1.03); }
   }
 
-  /* Hover - smooth blooming effect */
+  /* Hover effect - simple scale */
   .magic-flower:hover {
-    opacity: 0.85;
-    filter: drop-shadow(0 4px 12px rgba(255, 77, 141, 0.4));
+    opacity: 0.8;
     z-index: 100;
   }
 
   .magic-flower:hover img {
-    animation: smoothBloom 0.6s ease-out forwards, gentleFloat 4s ease-in-out infinite 0.6s;
+    animation: sideBloom 0.4s ease-out forwards;
   }
 
-  /* Smooth blooming animation */
-  @keyframes smoothBloom {
+  @keyframes sideBloom {
     0% { transform: scale(1) rotate(0deg); }
-    30% { transform: scale(1.4) rotate(-8deg); }
-    60% { transform: scale(1.6) rotate(5deg); }
-    100% { transform: scale(1.5) rotate(0deg); }
+    50% { transform: scale(1.8) rotate(-10deg); }
+    100% { transform: scale(1.5) rotate(5deg); }
   }
 
-  /* Gentle floating after bloom */
-  @keyframes gentleFloat {
-    0%, 100% { transform: scale(1.5) rotate(0deg) translateY(0); }
-    50% { transform: scale(1.5) rotate(3deg) translateY(-8px); }
-  }
-
-  /* Click/tap effect - happy bounce */
   .magic-flower:active img {
-    animation: happyBounce 0.5s ease-out;
+    transform: scale(1.8) rotate(15deg);
   }
 
-  @keyframes happyBounce {
-    0% { transform: scale(1.5) rotate(0deg); }
-    40% { transform: scale(2) rotate(-10deg) translateY(-15px); }
-    70% { transform: scale(1.8) rotate(10deg) translateY(-5px); }
-    100% { transform: scale(1.5) rotate(0deg) translateY(0); }
-  }
-
-  /* Mouse leave - smooth shrink back */
-  .magic-flower:not(:hover) img {
-    animation: smoothShrink 0.4s ease-out forwards, microSway 5s ease-in-out infinite 0.4s;
-  }
-
-  @keyframes smoothShrink {
-    0% { transform: scale(1.5); }
-    100% { transform: scale(1) rotate(0deg); }
-  }
-
-  /* CENTER FLOATING FLOWERS - HERO SECTION */
+  /* CENTER FLOATING FLOWERS - OPTIMIZED */
   .center-flowers {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 1200px;
+    height: 1000px;
     pointer-events: none;
     z-index: 0;
     overflow: visible;
@@ -2070,13 +2008,13 @@
 
   .center-flower {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    opacity: 0.15;
+    width: 18px;
+    height: 18px;
+    opacity: 0.12;
     pointer-events: auto;
     cursor: pointer;
-    filter: blur(0.5px);
     will-change: transform;
+    transform: translate3d(0, 0, 0);
   }
 
   .center-flower img {
@@ -2085,132 +2023,38 @@
     object-fit: contain;
   }
 
-  /* Center flower positions - scattered around hero */
-  .cf-1 { top: 100px; left: 15%; animation: floatAround1 15s ease-in-out infinite; }
-  .cf-2 { top: 200px; left: 25%; animation: floatAround2 18s ease-in-out infinite; }
-  .cf-3 { top: 150px; left: 45%; animation: floatAround3 20s ease-in-out infinite; }
-  .cf-4 { top: 300px; left: 60%; animation: floatAround4 16s ease-in-out infinite; }
-  .cf-5 { top: 180px; left: 75%; animation: floatAround5 19s ease-in-out infinite; }
-  .cf-6 { top: 400px; left: 20%; animation: floatAround6 17s ease-in-out infinite; }
-  .cf-7 { top: 350px; left: 40%; animation: floatAround7 21s ease-in-out infinite; }
-  .cf-8 { top: 450px; left: 55%; animation: floatAround8 14s ease-in-out infinite; }
-  .cf-9 { top: 500px; left: 70%; animation: floatAround9 22s ease-in-out infinite; }
-  .cf-10 { top: 600px; left: 30%; animation: floatAround10 18s ease-in-out infinite; }
-  .cf-11 { top: 550px; left: 50%; animation: floatAround11 20s ease-in-out infinite; }
-  .cf-12 { top: 700px; left: 65%; animation: floatAround12 16s ease-in-out infinite; }
+  /* 6 center flowers with shared animation */
+  .cf-1 { top: 120px; left: 20%; animation: gentleFloat 12s ease-in-out infinite; }
+  .cf-2 { top: 250px; left: 70%; animation: gentleFloat 15s ease-in-out infinite 2s; }
+  .cf-3 { top: 400px; left: 15%; animation: gentleFloat 14s ease-in-out infinite 4s; }
+  .cf-4 { top: 180px; left: 45%; animation: gentleFloat 16s ease-in-out infinite 1s; }
+  .cf-5 { top: 550px; left: 65%; animation: gentleFloat 13s ease-in-out infinite 3s; }
+  .cf-6 { top: 700px; left: 25%; animation: gentleFloat 17s ease-in-out infinite 5s; }
 
-  /* Floating animations - flowers fly around slowly */
-  @keyframes floatAround1 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(30px, -20px) rotate(15deg); }
-    50% { transform: translate(-10px, -40px) rotate(-10deg); }
-    75% { transform: translate(-20px, -10px) rotate(5deg); }
+  /* Single reusable gentle float animation */
+  @keyframes gentleFloat {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-3deg) scale(1); }
+    25% { transform: translate3d(15px, -10px, 0) rotate(5deg) scale(1.05); }
+    50% { transform: translate3d(-5px, -20px, 0) rotate(-2deg) scale(1); }
+    75% { transform: translate3d(-10px, -5px, 0) rotate(3deg) scale(1.03); }
   }
 
-  @keyframes floatAround2 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-25px, 15px) rotate(-12deg); }
-    50% { transform: translate(15px, 30px) rotate(8deg); }
-    75% { transform: translate(35px, -5px) rotate(-3deg); }
-  }
-
-  @keyframes floatAround3 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(20px, 25px) rotate(10deg); }
-    50% { transform: translate(-30px, 10px) rotate(-15deg); }
-    75% { transform: translate(-15px, -20px) rotate(5deg); }
-  }
-
-  @keyframes floatAround4 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-35px, -15px) rotate(-8deg); }
-    50% { transform: translate(10px, -30px) rotate(12deg); }
-    75% { transform: translate(25px, 10px) rotate(-5deg); }
-  }
-
-  @keyframes floatAround5 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(15px, -30px) rotate(20deg); }
-    50% { transform: translate(-20px, -15px) rotate(-12deg); }
-    75% { transform: translate(-30px, 20px) rotate(8deg); }
-  }
-
-  @keyframes floatAround6 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(25px, 20px) rotate(-15deg); }
-    50% { transform: translate(-15px, -25px) rotate(10deg); }
-    75% { transform: translate(10px, -10px) rotate(-8deg); }
-  }
-
-  @keyframes floatAround7 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-20px, -25px) rotate(18deg); }
-    50% { transform: translate(30px, -10px) rotate(-10deg); }
-    75% { transform: translate(5px, 15px) rotate(12deg); }
-  }
-
-  @keyframes floatAround8 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(10px, -35px) rotate(-18deg); }
-    50% { transform: translate(-25px, 5px) rotate(15deg); }
-    75% { transform: translate(20px, 20px) rotate(-8deg); }
-  }
-
-  @keyframes floatAround9 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-30px, 10px) rotate(12deg); }
-    50% { transform: translate(5px, -20px) rotate(-15deg); }
-    75% { transform: translate(25px, -30px) rotate(8deg); }
-  }
-
-  @keyframes floatAround10 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(20px, -15px) rotate(-10deg); }
-    50% { transform: translate(-10px, 25px) rotate(18deg); }
-    75% { transform: translate(-25px, -5px) rotate(-12deg); }
-  }
-
-  @keyframes floatAround11 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-15px, -20px) rotate(15deg); }
-    50% { transform: translate(25px, 15px) rotate(-8deg); }
-    75% { transform: translate(10px, -25px) rotate(10deg); }
-  }
-
-  @keyframes floatAround12 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(30px, 5px) rotate(-12deg); }
-    50% { transform: translate(-5px, -15px) rotate(20deg); }
-    75% { transform: translate(-20px, 10px) rotate(-15deg); }
-  }
-
-  /* Center flowers hover - brighten and grow */
+  /* Center flowers hover */
   .center-flower:hover {
-    opacity: 0.6;
-    filter: blur(0px) drop-shadow(0 4px 12px rgba(255, 77, 141, 0.4));
+    opacity: 0.7;
+    filter: drop-shadow(0 4px 12px rgba(255, 77, 141, 0.4));
     z-index: 100;
     animation-play-state: paused;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
 
   .center-flower:hover img {
-    animation: centerBloom 0.5s ease-out forwards;
-  }
-
-  @keyframes centerBloom {
-    0% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(2.5) rotate(-10deg); }
-    100% { transform: scale(2) rotate(5deg); }
+    transform: scale(1.8);
   }
 
   .center-flower:active img {
-    animation: centerBounce 0.4s ease-out;
-  }
-
-  @keyframes centerBounce {
-    0% { transform: scale(2); }
-    50% { transform: scale(3) rotate(-20deg); }
-    100% { transform: scale(2.2) rotate(10deg); }
+    transform: scale(2.2) rotate(15deg);
+    transition: transform 0.1s ease;
   }
 
   .back-to-top:hover {
@@ -2379,58 +2223,33 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- CENTER FLOATING FLOWERS - HERO SECTION (Behind content) -->
+<!-- CENTER FLOATING FLOWERS - OPTIMIZED (6 flowers) -->
 <div class="center-flowers">
-  <!-- Floating flowers in center area - small and subtle -->
   <div class="center-flower cf-1"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="center-flower cf-2"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="center-flower cf-3"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="center-flower cf-4"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="center-flower cf-5"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="center-flower cf-6"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="center-flower cf-7"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="center-flower cf-8"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="center-flower cf-9"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="center-flower cf-10"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="center-flower cf-11"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="center-flower cf-12"><img src="Portfolio/Flower.svg" alt="🌸"></div>
 </div>
 
-<!-- MAGICAL FLOWER GARDEN - 30 FLOWERS! -->
+<!-- SIDE FLOWERS - OPTIMIZED (12 flowers) -->
 <div class="flower-garden">
-  <!-- Left side flowers (15) -->
+  <!-- Left side flowers (6) -->
   <div class="magic-flower fl-l1"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-l2"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-l3"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-l4"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-l5"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-l6"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l7"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l8"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l9"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l10"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l11"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l12"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l13"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l14"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-l15"><img src="Portfolio/Flower.svg" alt="🌸"></div>
 
-  <!-- Right side flowers (15) -->
+  <!-- Right side flowers (6) -->
   <div class="magic-flower fl-r1"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-r2"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-r3"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-r4"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-r5"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="magic-flower fl-r6"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r7"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r8"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r9"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r10"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r11"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r12"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r13"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r14"><img src="Portfolio/Flower.svg" alt="🌸"></div>
-  <div class="magic-flower fl-r15"><img src="Portfolio/Flower.svg" alt="🌸"></div>
 </div>
 
 <!-- NAV -->
@@ -3288,76 +3107,63 @@
 </footer>
 
 <script>
-  // Morphing Cursor with Enhanced Trail
+  // Optimized Smooth Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0;
-  let trailCounter = 0;
-  
-  // Create trail elements
-  function createTrail(x, y) {
-    const trail = document.createElement('div');
-    trail.className = 'cursor-trail';
-    trail.style.left = x + 'px';
-    trail.style.top = y + 'px';
-    trail.style.background = `hsl(${Math.random() * 30 + 330}, 70%, 60%)`; // Pink variations
-    document.body.appendChild(trail);
-    
-    // Remove trail after animation
-    setTimeout(() => {
-      trail.remove();
-    }, 1000);
-  }
-  
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    
-    // Update main cursor and ring with new dimensions
-    cursor.style.left = (mx - 10) + 'px';
-    cursor.style.top = (my - 10) + 'px';
-    ring.style.left = (mx - 20) + 'px';
-    ring.style.top = (my - 20) + 'px';
-    
-    // Create trail effect (every few frames for performance)
-    trailCounter++;
-    if (trailCounter % 4 === 0) {
-      createTrail(mx - 3, my - 3);
+  let cursorX = 0, cursorY = 0;
+  let ringX = 0, ringY = 0;
+  let isMoving = false;
+  let rafId = null;
+
+  // Smooth follow animation
+  function animateCursor() {
+    if (!isMoving) {
+      rafId = null;
+      return;
     }
+
+    // Lerp for smooth following (0.15 = cursor speed, 0.08 = ring speed)
+    cursorX += (mx - cursorX) * 0.15;
+    cursorY += (my - cursorY) * 0.15;
+    ringX += (mx - ringX) * 0.08;
+    ringY += (my - ringY) * 0.08;
+
+    cursor.style.transform = `translate3d(${cursorX - 10}px, ${cursorY - 10}px, 0)`;
+    ring.style.transform = `translate3d(${ringX - 20}px, ${ringY - 20}px, 0)`;
+
+    rafId = requestAnimationFrame(animateCursor);
+  }
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
+
+    if (!isMoving) {
+      isMoving = true;
+      if (!rafId) {
+        animateCursor();
+      }
+    }
+
+    // Stop animation after mouse stops
+    clearTimeout(window.cursorTimeout);
+    window.cursorTimeout = setTimeout(() => {
+      isMoving = false;
+    }, 100);
   });
 
-  // Cursor hover effects with enhanced states
-  const hoverElements = document.querySelectorAll('a, button, .project-card, .service-card, .skill-item');
+  // Cursor hover effects - using CSS classes for smooth performance
+  const hoverElements = document.querySelectorAll('a, button, .project-card, .service-card, .skill-item, .magic-flower, .center-flower');
   hoverElements.forEach(elem => {
     elem.addEventListener('mouseenter', () => {
-      cursor.style.borderColor = '#FF1493'; // Hot pink on hover
-      cursor.style.transform = 'scale(1.3)';
-      cursor.style.animation = 'none';
-      
-      const cursorAfter = cursor.querySelector('::after');
-      if (cursorAfter) {
-        cursorAfter.style.background = '#FF1493';
-        cursorAfter.style.transform = 'translate(-50%, -50%) scale(1.5)';
-      }
-      
-      ring.style.borderColor = '#FF1493';
-      ring.style.transform = 'translate(-20px, -20px) scale(1.5)';
-      ring.style.opacity = '0.8';
+      cursor.classList.add('hover');
+      ring.classList.add('hover');
     });
-    
+
     elem.addEventListener('mouseleave', () => {
-      cursor.style.borderColor = 'var(--pink)';
-      cursor.style.transform = 'scale(1)';
-      cursor.style.animation = 'cursorMorph 3s ease-in-out infinite';
-      
-      const cursorAfter = cursor.querySelector('::after');
-      if (cursorAfter) {
-        cursorAfter.style.background = 'var(--pink)';
-        cursorAfter.style.transform = 'translate(-50%, -50%) scale(1)';
-      }
-      
-      ring.style.borderColor = 'rgba(255, 77, 141, 0.3)';
-      ring.style.transform = 'translate(-20px, -20px) scale(1)';
-      ring.style.opacity = '1';
+      cursor.classList.remove('hover');
+      ring.classList.remove('hover');
     });
   });
 
