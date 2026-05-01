@@ -2440,7 +2440,26 @@
       </div>
     </div>
 
-    <div class="project-card reveal" style="transition-delay:0.15s">
+    <div class="project-card reveal" onclick="openSkillifyModal()" style="cursor: pointer; transition-delay:0.15s">
+      <div class="project-thumb">
+        <img src="Portfolio/Thumbnail2.png" alt="Skillify - EdTech Platform" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+      </div>
+      <div class="project-body">
+        <span class="project-tag">Figma · EdTech Platform</span>
+        <div class="project-title">Skillify</div>
+        <div class="project-desc">An innovative online learning platform connecting passionate learners with skilled instructors worldwide. Features flexible scheduling, personalized classes, and freelancing opportunities for educators.</div>
+      </div>
+      <div class="project-footer">
+        <div class="project-tools">
+          <span class="tool-chip">Figma</span>
+          <span class="tool-chip">User Research</span>
+          <span class="tool-chip">Prototyping</span>
+        </div>
+        <a href="#" class="project-link" onclick="openSkillifyModal(); return false;">↗</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.3s">
       <div class="project-thumb project-thumb-2">🎵</div>
       <div class="project-body">
         <span class="project-tag">Figma · Motion Design</span>
@@ -2963,6 +2982,262 @@
   </div>
 </div>
 
+<!-- SKILLIFY CASE STUDY MODAL -->
+<div id="skillifyModal" class="case-study-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeSkillifyModal()">&times;</button>
+    
+    <!-- Hero Section -->
+    <section class="case-study-hero">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        <span>Case Study 02</span>
+      </div>
+      <h1 class="case-study-title">Skillify</h1>
+      <p class="case-study-subtitle">An innovative online learning platform connecting passionate learners with skilled instructors worldwide. Making education accessible, engaging, and empowering.</p>
+      <div class="case-study-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">UX Research & Design</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Duration</span>
+          <span class="meta-value">6 Weeks</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Tools</span>
+          <span class="meta-value">Figma, User Research, Prototyping</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="case-study-section" style="background: white;">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Problem Statement</h2>
+      </div>
+      
+      <div class="overview-grid">
+        <div class="overview-card reveal">
+          <div class="card-icon">🎯</div>
+          <h3>The Challenge</h3>
+          <p>In today's fast-paced world, individuals face significant challenges in acquiring diverse skills due to inflexible and inaccessible traditional learning methods.</p>
+        </div>
+        <div class="overview-card reveal" style="transition-delay:0.1s">
+          <div class="card-icon">💼</div>
+          <h3>Job Scarcity</h3>
+          <p>Job scarcity is a critical issue, leaving many skilled professionals without employment opportunities.</p>
+        </div>
+        <div class="overview-card reveal" style="transition-delay:0.2s">
+          <div class="card-icon">🔄</div>
+          <h3>Dual Problem</h3>
+          <p>This dual problem creates a pressing need for solutions that address both the difficulty in learning new skills and the lack of job opportunities for freelancers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="case-study-section" style="background: linear-gradient(135deg, #faf5f7 0%, #fdf5f8 100%);">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Our Solution</h2>
+      </div>
+      
+      <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <div class="finding-card reveal" style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+          <h3 style="color: var(--pink); font-size: 28px; margin-bottom: 20px;">Unlock Your Potential and Earn!</h3>
+          <p style="font-size: 18px; line-height: 1.7; margin-bottom: 30px;">
+            Skillify is the ultimate platform connecting passionate learners with skilled instructors worldwide. Whether you want to master a new language, improve your culinary talents, or dive into digital arts, Skillify offers flexible, personalized classes tailored to your needs.
+          </p>
+          <p style="font-size: 16px; line-height: 1.6; color: #666;">
+            For educators, it's a fantastic freelancing opportunity to share expertise and earn extra income by teaching what you love. With Skillify, education is accessible, engaging, and empowering!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Research -->
+    <section class="case-study-section" style="background: white;">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">User Research</h2>
+      </div>
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="finding-card reveal" style="background: #faf5f7; padding: 30px; border-radius: 16px; margin-bottom: 30px;">
+          <h4 style="color: var(--pink); margin-bottom: 15px;">📋 Interview Questions for Potential Teachers</h4>
+          <ul style="list-style: none; padding: 0; font-size: 15px; line-height: 1.8;">
+            <li style="margin-bottom: 8px;">• <strong>Personal Information:</strong> Full Name, Location</li>
+            <li style="margin-bottom: 8px;">• <strong>Professional Background:</strong> Skills, experience, education level</li>
+            <li style="margin-bottom: 8px;">• <strong>Teaching Experience:</strong> Prior teaching, preferred age groups, teaching style</li>
+            <li style="margin-bottom: 8px;">• <strong>Availability:</strong> Days/times, classes per week willing to conduct</li>
+            <li style="margin-bottom: 8px;">• <strong>Portfolio:</strong> Ability to provide 20-minute demo class</li>
+            <li style="margin-bottom: 8px;">• <strong>Pricing:</strong> Preferred hourly rate, discount offerings</li>
+            <li style="margin-bottom: 8px;">• <strong>Technical:</strong> Stable internet, necessary equipment</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Persona -->
+    <section class="case-study-section" style="background: linear-gradient(135deg, #faf5f7 0%, #fdf5f8 100%);">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">User Persona</h2>
+      </div>
+      
+      <div class="overview-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="overview-card reveal">
+          <h3 style="color: var(--pink);">👤 Ansh Sharma</h3>
+          <p style="font-weight: 600; margin-bottom: 15px;">The Busy Professional Learner</p>
+        </div>
+        <div class="overview-card reveal" style="transition-delay:0.1s">
+          <h3>💬 Says</h3>
+          <ul style="font-size: 14px; line-height: 1.6; padding-left: 20px;">
+            <li>"I need to advance my career, but I don't have enough time."</li>
+            <li>"I want to learn new hobbies, but it's hard to find content that fits my schedule."</li>
+            <li>"Time management is key, but I often struggle with it."</li>
+          </ul>
+        </div>
+        <div class="overview-card reveal" style="transition-delay:0.2s">
+          <h3>🤔 Thinks</h3>
+          <ul style="font-size: 14px; line-height: 1.6; padding-left: 20px;">
+            <li>"How can I find high-quality content that fits into my busy schedule?"</li>
+            <li>"I wish there were more concise resources tailored to my needs."</li>
+            <li>"Balancing career growth and personal hobbies is challenging."</li>
+            <li>"I need a structured approach to manage my time better."</li>
+          </ul>
+        </div>
+        <div class="overview-card reveal" style="transition-delay:0.3s">
+          <h3>✅ Does</h3>
+          <ul style="font-size: 14px; line-height: 1.6; padding-left: 20px;">
+            <li>Spends time searching for concise and relevant learning resources</li>
+            <li>Tries to squeeze in learning sessions during free moments</li>
+            <li>Participates in online courses or webinars for career advancement</li>
+            <li>Practices guitar and goes for runs when time allows</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competitive Analysis -->
+    <section class="case-study-section" style="background: white;">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Competitive Analysis</h2>
+      </div>
+      
+      <div style="max-width: 1000px; margin: 0 auto; overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+          <thead style="background: var(--pink); color: white;">
+            <tr>
+              <th style="padding: 15px; text-align: left;">Company/Product</th>
+              <th style="padding: 15px; text-align: left;">Key Features</th>
+              <th style="padding: 15px; text-align: left;">Target Audience</th>
+              <th style="padding: 15px; text-align: left;">USP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 15px; font-weight: 600;">Udemy</td>
+              <td style="padding: 15px;">Wide range of courses, user reviews, lifetime access</td>
+              <td style="padding: 15px;">General public, professionals, hobbyists</td>
+              <td style="padding: 15px;">Large course catalog with on-demand video courses</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 15px; font-weight: 600;">Skillshare</td>
+              <td style="padding: 15px;">Subscription-based, community-driven, creative classes</td>
+              <td style="padding: 15px;">Creatives, hobbyists, lifelong learners</td>
+              <td style="padding: 15px;">Unlimited access to thousands of classes</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 15px; font-weight: 600;">Coursera</td>
+              <td style="padding: 15px;">University-affiliated, professional certificates, degrees</td>
+              <td style="padding: 15px;">Professionals, students, career switchers</td>
+              <td style="padding: 15px;">Partnered with top universities and companies</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 15px; font-weight: 600;">Teachable</td>
+              <td style="padding: 15px;">Create and sell online courses, customizable branding</td>
+              <td style="padding: 15px;">Entrepreneurs, educators, influencers</td>
+              <td style="padding: 15px;">Complete control over pricing, content, and branding</td>
+            </tr>
+            <tr>
+              <td style="padding: 15px; font-weight: 600; color: var(--pink);">Skillify</td>
+              <td style="padding: 15px;">Personalized classes, flexible scheduling, freelancing for educators</td>
+              <td style="padding: 15px;">Busy professionals, skill-seekers, freelance instructors</td>
+              <td style="padding: 15px;"><strong>Flexible, personalized learning + earning opportunity</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="case-study-section" style="background: linear-gradient(135deg, #faf5f7 0%, #fdf5f8 100%);">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Key Features</h2>
+      </div>
+      
+      <div class="overview-grid">
+        <div class="overview-card reveal">
+          <div class="card-icon">📅</div>
+          <h3>Flexible Scheduling</h3>
+          <p>Learn at your own pace with classes that fit your busy schedule. No more rigid timelines.</p>
+        </div>
+        <div class="overview-card reveal" style="transition-delay:0.1s">
+          <div class="card-icon">🎨</div>
+          <h3>Personalized Classes</h3>
+          <p>Tailored learning experiences based on your skill level, interests, and goals.</p>
+        </div>
+        <div class="overview-card reveal" style="transition-delay:0.2s">
+          <div class="card-icon">💰</div>
+          <h3>Earn While Teaching</h3>
+          <p>Skilled professionals can share expertise and earn extra income through flexible teaching.</p>
+        </div>
+        <div class="overview-card reveal" style="transition-delay:0.3s">
+          <div class="card-icon">🌍</div>
+          <h3>Global Community</h3>
+          <p>Connect with learners and instructors worldwide across diverse skills and interests.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="case-study-section" style="background: white; border-bottom: none;">
+      <div class="conclusion-content reveal" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <div class="conclusion-emoji">🚀</div>
+        <h2 class="conclusion-title">Making Education Accessible</h2>
+        <p class="conclusion-text">
+          Skillify bridges the gap between those eager to learn and those eager to teach. By creating a platform that values flexibility, personalization, and empowerment, we've designed a solution that addresses both the learning crisis and job scarcity in one unified experience.
+        </p>
+        <div class="result-stats" style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 800; color: var(--pink);">∞</div>
+            <div style="font-size: 14px; color: #666;">Skills to Learn</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 800; color: var(--pink);">Global</div>
+            <div style="font-size: 14px; color: #666;">Reach</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 800; color: var(--pink);">Flexible</div>
+            <div style="font-size: 14px; color: #666;">Scheduling</div>
+          </div>
+        </div>
+        <button class="back-to-top-btn" onclick="scrollToTopSkillify()" style="margin-top: 60px;">
+          <span>Back to Top</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+  </div>
+</div>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="section-tag">What I Do</div>
@@ -3274,6 +3549,37 @@
   // Scroll to top of Happy Space modal
   function scrollToTopHappySpace() {
     const modal = document.getElementById('happySpaceModal');
+    if (modal) {
+      modal.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // Skillify Modal Functions
+  function openSkillifyModal() {
+    const modal = document.getElementById('skillifyModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSkillifyModal() {
+    const modal = document.getElementById('skillifyModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close Skillify modal on backdrop click
+  document.getElementById('skillifyModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeSkillifyModal();
+    }
+  });
+
+  // Scroll to top of Skillify modal
+  function scrollToTopSkillify() {
+    const modal = document.getElementById('skillifyModal');
     if (modal) {
       modal.scrollTo({
         top: 0,
