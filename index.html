@@ -1649,11 +1649,11 @@
       max-height: 250px;
     }
 
-    /* Mobile flowers - smaller and fewer */
+    /* Mobile flowers - smaller and fewer with smooth animations */
     .magic-flower {
       width: 20px !important;
       height: 20px !important;
-      opacity: 0.2;
+      opacity: 0.25;
     }
 
     /* Show only 6 flowers on mobile */
@@ -1663,11 +1663,17 @@
     .fl-r1, .fl-r3, .fl-r5, .fl-r7, .fl-r8, .fl-r9, .fl-r10, .fl-r11, .fl-r12, .fl-r13, .fl-r14, .fl-r15 { display: none !important; }
 
     .fl-l2 { top: 400px !important; }
+    .fl-l2 img { animation-delay: 0s; }
     .fl-l4 { top: 1200px !important; }
+    .fl-l4 img { animation-delay: 1s; }
     .fl-l6 { top: 2000px !important; }
+    .fl-l6 img { animation-delay: 2s; }
     .fl-r2 { top: 800px !important; }
+    .fl-r2 img { animation-delay: 0.5s; }
     .fl-r4 { top: 1600px !important; }
+    .fl-r4 img { animation-delay: 1.5s; }
     .fl-r6 { top: 2400px !important; }
+    .fl-r6 img { animation-delay: 2.5s; }
 
     .conclusion-content {
       flex-direction: column;
@@ -1882,7 +1888,7 @@
     background: #ff2d76;
   }
 
-  /* MAGICAL FLOWER GARDEN - SCROLL WITH PAGE */
+  /* MAGICAL FLOWER GARDEN - SMOOTH BLOOMING MICRO-ANIMATIONS */
   .flower-garden {
     position: absolute;
     top: 0;
@@ -1898,96 +1904,136 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    opacity: 0.25;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0.2;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     pointer-events: auto;
     cursor: pointer;
-    filter: drop-shadow(0 2px 4px rgba(255, 77, 141, 0.2));
-    animation: gentleFloat 6s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(255, 77, 141, 0.15));
+    will-change: transform, opacity;
   }
 
   .magic-flower img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    animation: microSway 5s ease-in-out infinite;
   }
 
-  /* Left side flowers - various sizes and positions */
-  .fl-l1 { top: 150px; left: 1%; width: 35px; height: 35px; animation-delay: 0s; }
-  .fl-l2 { top: 400px; left: 3%; width: 25px; height: 25px; animation-delay: 0.5s; }
-  .fl-l3 { top: 700px; left: 0.5%; width: 45px; height: 45px; animation-delay: 1s; }
-  .fl-l4 { top: 1000px; left: 4%; width: 30px; height: 30px; animation-delay: 1.5s; }
-  .fl-l5 { top: 1300px; left: 1.5%; width: 38px; height: 38px; animation-delay: 2s; }
-  .fl-l6 { top: 1600px; left: 5%; width: 28px; height: 28px; animation-delay: 2.5s; }
-  .fl-l7 { top: 1900px; left: 2%; width: 42px; height: 42px; animation-delay: 3s; }
-  .fl-l8 { top: 2200px; left: 3.5%; width: 32px; height: 32px; animation-delay: 3.5s; }
-  .fl-l9 { top: 2500px; left: 0.8%; width: 36px; height: 36px; animation-delay: 4s; }
-  .fl-l10 { top: 2800px; left: 4.5%; width: 26px; height: 26px; animation-delay: 4.5s; }
-  .fl-l11 { top: 3100px; left: 2.5%; width: 40px; height: 40px; animation-delay: 5s; }
-  .fl-l12 { top: 3400px; left: 1%; width: 28px; height: 28px; animation-delay: 0.3s; }
-  .fl-l13 { top: 3700px; left: 5%; width: 34px; height: 34px; animation-delay: 0.8s; }
-  .fl-l14 { top: 4000px; left: 2%; width: 30px; height: 30px; animation-delay: 1.3s; }
-  .fl-l15 { top: 4300px; left: 3%; width: 38px; height: 38px; animation-delay: 1.8s; }
+  /* Individual flower positions with staggered sway delays */
+  .fl-l1 { top: 150px; left: 1%; width: 35px; height: 35px; }
+  .fl-l1 img { animation-delay: 0s; }
+  .fl-l2 { top: 400px; left: 3%; width: 25px; height: 25px; }
+  .fl-l2 img { animation-delay: 0.3s; }
+  .fl-l3 { top: 700px; left: 0.5%; width: 45px; height: 45px; }
+  .fl-l3 img { animation-delay: 0.6s; }
+  .fl-l4 { top: 1000px; left: 4%; width: 30px; height: 30px; }
+  .fl-l4 img { animation-delay: 0.9s; }
+  .fl-l5 { top: 1300px; left: 1.5%; width: 38px; height: 38px; }
+  .fl-l5 img { animation-delay: 1.2s; }
+  .fl-l6 { top: 1600px; left: 5%; width: 28px; height: 28px; }
+  .fl-l6 img { animation-delay: 1.5s; }
+  .fl-l7 { top: 1900px; left: 2%; width: 42px; height: 42px; }
+  .fl-l7 img { animation-delay: 1.8s; }
+  .fl-l8 { top: 2200px; left: 3.5%; width: 32px; height: 32px; }
+  .fl-l8 img { animation-delay: 2.1s; }
+  .fl-l9 { top: 2500px; left: 0.8%; width: 36px; height: 36px; }
+  .fl-l9 img { animation-delay: 2.4s; }
+  .fl-l10 { top: 2800px; left: 4.5%; width: 26px; height: 26px; }
+  .fl-l10 img { animation-delay: 2.7s; }
+  .fl-l11 { top: 3100px; left: 2.5%; width: 40px; height: 40px; }
+  .fl-l11 img { animation-delay: 3s; }
+  .fl-l12 { top: 3400px; left: 1%; width: 28px; height: 28px; }
+  .fl-l12 img { animation-delay: 3.3s; }
+  .fl-l13 { top: 3700px; left: 5%; width: 34px; height: 34px; }
+  .fl-l13 img { animation-delay: 3.6s; }
+  .fl-l14 { top: 4000px; left: 2%; width: 30px; height: 30px; }
+  .fl-l14 img { animation-delay: 3.9s; }
+  .fl-l15 { top: 4300px; left: 3%; width: 38px; height: 38px; }
+  .fl-l15 img { animation-delay: 4.2s; }
 
   /* Right side flowers */
-  .fl-r1 { top: 200px; right: 1%; width: 38px; height: 38px; animation-delay: 0.2s; }
-  .fl-r2 { top: 500px; right: 4%; width: 28px; height: 28px; animation-delay: 0.7s; }
-  .fl-r3 { top: 800px; right: 2%; width: 44px; height: 44px; animation-delay: 1.2s; }
-  .fl-r4 { top: 1100px; right: 5%; width: 32px; height: 32px; animation-delay: 1.7s; }
-  .fl-r5 { top: 1400px; right: 1.5%; width: 36px; height: 36px; animation-delay: 2.2s; }
-  .fl-r6 { top: 1700px; right: 3.5%; width: 26px; height: 26px; animation-delay: 2.7s; }
-  .fl-r7 { top: 2000px; right: 0.5%; width: 40px; height: 40px; animation-delay: 3.2s; }
-  .fl-r8 { top: 2300px; right: 4%; width: 34px; height: 34px; animation-delay: 3.7s; }
-  .fl-r9 { top: 2600px; right: 2.5%; width: 30px; height: 30px; animation-delay: 4.2s; }
-  .fl-r10 { top: 2900px; right: 5%; width: 42px; height: 42px; animation-delay: 4.7s; }
-  .fl-r11 { top: 3200px; right: 1%; width: 28px; height: 28px; animation-delay: 0.4s; }
-  .fl-r12 { top: 3500px; right: 4%; width: 36px; height: 36px; animation-delay: 0.9s; }
-  .fl-r13 { top: 3800px; right: 3%; width: 32px; height: 32px; animation-delay: 1.4s; }
-  .fl-r14 { top: 4100px; right: 1.5%; width: 40px; height: 40px; animation-delay: 1.9s; }
-  .fl-r15 { top: 4400px; right: 4.5%; width: 26px; height: 26px; animation-delay: 2.4s; }
+  .fl-r1 { top: 200px; right: 1%; width: 38px; height: 38px; }
+  .fl-r1 img { animation-delay: 0.15s; }
+  .fl-r2 { top: 500px; right: 4%; width: 28px; height: 28px; }
+  .fl-r2 img { animation-delay: 0.45s; }
+  .fl-r3 { top: 800px; right: 2%; width: 44px; height: 44px; }
+  .fl-r3 img { animation-delay: 0.75s; }
+  .fl-r4 { top: 1100px; right: 5%; width: 32px; height: 32px; }
+  .fl-r4 img { animation-delay: 1.05s; }
+  .fl-r5 { top: 1400px; right: 1.5%; width: 36px; height: 36px; }
+  .fl-r5 img { animation-delay: 1.35s; }
+  .fl-r6 { top: 1700px; right: 3.5%; width: 26px; height: 26px; }
+  .fl-r6 img { animation-delay: 1.65s; }
+  .fl-r7 { top: 2000px; right: 0.5%; width: 40px; height: 40px; }
+  .fl-r7 img { animation-delay: 1.95s; }
+  .fl-r8 { top: 2300px; right: 4%; width: 34px; height: 34px; }
+  .fl-r8 img { animation-delay: 2.25s; }
+  .fl-r9 { top: 2600px; right: 2.5%; width: 30px; height: 30px; }
+  .fl-r9 img { animation-delay: 2.55s; }
+  .fl-r10 { top: 2900px; right: 5%; width: 42px; height: 42px; }
+  .fl-r10 img { animation-delay: 2.85s; }
+  .fl-r11 { top: 3200px; right: 1%; width: 28px; height: 28px; }
+  .fl-r11 img { animation-delay: 3.15s; }
+  .fl-r12 { top: 3500px; right: 4%; width: 36px; height: 36px; }
+  .fl-r12 img { animation-delay: 3.45s; }
+  .fl-r13 { top: 3800px; right: 3%; width: 32px; height: 32px; }
+  .fl-r13 img { animation-delay: 3.75s; }
+  .fl-r14 { top: 4100px; right: 1.5%; width: 40px; height: 40px; }
+  .fl-r14 img { animation-delay: 4.05s; }
+  .fl-r15 { top: 4400px; right: 4.5%; width: 26px; height: 26px; }
+  .fl-r15 img { animation-delay: 4.35s; }
 
-  /* Hover effects - bloom and fly! */
+  /* Base micro sway animation - subtle breathing */
+  @keyframes microSway {
+    0%, 100% { transform: rotate(-2deg) scale(1); }
+    50% { transform: rotate(2deg) scale(1.02); }
+  }
+
+  /* Hover - smooth blooming effect */
   .magic-flower:hover {
-    transform: scale(1.8) rotate(20deg) translateY(-30px);
-    opacity: 0.9;
-    filter: drop-shadow(0 8px 20px rgba(255, 77, 141, 0.6));
+    opacity: 0.85;
+    filter: drop-shadow(0 4px 12px rgba(255, 77, 141, 0.4));
     z-index: 100;
-    animation: flowerBloom 0.6s ease-out, flowerFly 3s ease-in-out infinite;
   }
 
-  @keyframes gentleFloat {
-    0%, 100% { transform: translateY(0) rotate(-3deg); }
-    50% { transform: translateY(-15px) rotate(3deg); }
+  .magic-flower:hover img {
+    animation: smoothBloom 0.6s ease-out forwards, gentleFloat 4s ease-in-out infinite 0.6s;
   }
 
-  @keyframes flowerBloom {
+  /* Smooth blooming animation */
+  @keyframes smoothBloom {
     0% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(2.2) rotate(-15deg); }
-    100% { transform: scale(1.8) rotate(20deg); }
+    30% { transform: scale(1.4) rotate(-8deg); }
+    60% { transform: scale(1.6) rotate(5deg); }
+    100% { transform: scale(1.5) rotate(0deg); }
   }
 
-  @keyframes flowerFly {
-    0%, 100% { transform: scale(1.8) rotate(20deg) translateY(-30px) translateX(0); }
-    25% { transform: scale(1.8) rotate(25deg) translateY(-40px) translateX(10px); }
-    50% { transform: scale(1.8) rotate(15deg) translateY(-25px) translateX(5px); }
-    75% { transform: scale(1.8) rotate(30deg) translateY(-35px) translateX(-5px); }
+  /* Gentle floating after bloom */
+  @keyframes gentleFloat {
+    0%, 100% { transform: scale(1.5) rotate(0deg) translateY(0); }
+    50% { transform: scale(1.5) rotate(3deg) translateY(-8px); }
   }
 
-  /* Click effect - flower spins and bounces */
-  .magic-flower:active {
-    animation: flowerSpin 0.8s ease-out;
+  /* Click/tap effect - happy bounce */
+  .magic-flower:active img {
+    animation: happyBounce 0.5s ease-out;
   }
 
-  @keyframes flowerSpin {
-    0% { transform: scale(1.8) rotate(0deg); }
-    50% { transform: scale(2.5) rotate(180deg); }
-    100% { transform: scale(1.8) rotate(360deg); }
+  @keyframes happyBounce {
+    0% { transform: scale(1.5) rotate(0deg); }
+    40% { transform: scale(2) rotate(-10deg) translateY(-15px); }
+    70% { transform: scale(1.8) rotate(10deg) translateY(-5px); }
+    100% { transform: scale(1.5) rotate(0deg) translateY(0); }
   }
 
-  .flower-svg {
-    width: 100%;
-    height: 100%;
-    fill: var(--pink);
+  /* Mouse leave - smooth shrink back */
+  .magic-flower:not(:hover) img {
+    animation: smoothShrink 0.4s ease-out forwards, microSway 5s ease-in-out infinite 0.4s;
+  }
+
+  @keyframes smoothShrink {
+    0% { transform: scale(1.5); }
+    100% { transform: scale(1) rotate(0deg); }
   }
 
   .back-to-top:hover {
