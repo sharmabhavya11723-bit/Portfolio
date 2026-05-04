@@ -2057,6 +2057,112 @@
     transition: transform 0.1s ease;
   }
 
+  /* HERO FLOATING FLOWERS - Additional scattered flowers */
+  .hero-floating-flowers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 900px;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+  }
+
+  .hero-float-flower {
+    position: absolute;
+    opacity: 0.1;
+    pointer-events: auto;
+    cursor: pointer;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    transition: opacity 0.3s ease;
+  }
+
+  .hero-float-flower img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Various sizes for hero floating flowers */
+  .hf-1 { top: 80px; left: 8%; width: 22px; height: 22px; animation: heroFloat1 14s ease-in-out infinite; }
+  .hf-2 { top: 150px; left: 85%; width: 16px; height: 16px; animation: heroFloat2 16s ease-in-out infinite 1s; }
+  .hf-3 { top: 250px; left: 5%; width: 28px; height: 28px; animation: heroFloat3 18s ease-in-out infinite 2s; }
+  .hf-4 { top: 320px; left: 92%; width: 20px; height: 20px; animation: heroFloat4 15s ease-in-out infinite 0.5s; }
+  .hf-5 { top: 180px; left: 35%; width: 14px; height: 14px; animation: heroFloat5 20s ease-in-out infinite 3s; }
+  .hf-6 { top: 400px; left: 78%; width: 26px; height: 26px; animation: heroFloat6 17s ease-in-out infinite 1.5s; }
+  .hf-7 { top: 100px; left: 55%; width: 18px; height: 18px; animation: heroFloat1 19s ease-in-out infinite 2.5s; }
+  .hf-8 { top: 280px; left: 12%; width: 24px; height: 24px; animation: heroFloat2 13s ease-in-out infinite 4s; }
+  .hf-9 { top: 450px; left: 88%; width: 15px; height: 15px; animation: heroFloat3 21s ease-in-out infinite 0.8s; }
+  .hf-10 { top: 50px; left: 72%; width: 30px; height: 30px; animation: heroFloat4 12s ease-in-out infinite 3.5s; }
+  .hf-11 { top: 380px; left: 28%; width: 19px; height: 19px; animation: heroFloat5 16s ease-in-out infinite 2.2s; }
+  .hf-12 { top: 480px; left: 62%; width: 21px; height: 21px; animation: heroFloat6 14s ease-in-out infinite 1.2s; }
+
+  /* Floating animations for hero flowers */
+  @keyframes heroFloat1 {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg) scale(1); }
+    25% { transform: translate3d(20px, -15px, 0) rotate(6deg) scale(1.05); }
+    50% { transform: translate3d(-10px, -25px, 0) rotate(-2deg) scale(1); }
+    75% { transform: translate3d(-15px, -8px, 0) rotate(4deg) scale(1.03); }
+  }
+
+  @keyframes heroFloat2 {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(3deg) scale(1); }
+    33% { transform: translate3d(-18px, -20px, 0) rotate(-5deg) scale(1.04); }
+    66% { transform: translate3d(12px, -12px, 0) rotate(2deg) scale(1.02); }
+  }
+
+  @keyframes heroFloat3 {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg) scale(1); }
+    20% { transform: translate3d(15px, -10px, 0) rotate(4deg) scale(1.05); }
+    40% { transform: translate3d(-8px, -22px, 0) rotate(-3deg) scale(1); }
+    60% { transform: translate3d(-18px, -5px, 0) rotate(5deg) scale(1.03); }
+    80% { transform: translate3d(5px, -18px, 0) rotate(-4deg) scale(1.02); }
+  }
+
+  @keyframes heroFloat4 {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(5deg) scale(1); }
+    25% { transform: translate3d(-12px, -18px, 0) rotate(-3deg) scale(1.04); }
+    50% { transform: translate3d(20px, -8px, 0) rotate(6deg) scale(1.01); }
+    75% { transform: translate3d(-5px, -20px, 0) rotate(-5deg) scale(1.05); }
+  }
+
+  @keyframes heroFloat5 {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-3deg) scale(1); }
+    30% { transform: translate3d(18px, -12px, 0) rotate(4deg) scale(1.03); }
+    60% { transform: translate3d(-12px, -18px, 0) rotate(-2deg) scale(1.05); }
+  }
+
+  @keyframes heroFloat6 {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(2deg) scale(1); }
+    25% { transform: translate3d(-20px, -15px, 0) rotate(-4deg) scale(1.04); }
+    50% { transform: translate3d(10px, -25px, 0) rotate(3deg) scale(1.02); }
+    75% { transform: translate3d(15px, -5px, 0) rotate(-6deg) scale(1.03); }
+  }
+
+  /* Hover effects for hero floating flowers */
+  .hero-float-flower:hover {
+    opacity: 0.7;
+    z-index: 100;
+    animation-play-state: paused;
+  }
+
+  .hero-float-flower:hover img {
+    animation: heroBloom 0.4s ease-out forwards;
+  }
+
+  @keyframes heroBloom {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(2) rotate(-12deg); }
+    100% { transform: scale(1.6) rotate(8deg); }
+  }
+
+  .hero-float-flower:active img {
+    transform: scale(2) rotate(20deg);
+    transition: transform 0.1s ease;
+  }
+
   .back-to-top:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 40px rgba(255,77,141,0.4);
@@ -2231,6 +2337,22 @@
   <div class="center-flower cf-4"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="center-flower cf-5"><img src="Portfolio/Flower.svg" alt="🌸"></div>
   <div class="center-flower cf-6"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+</div>
+
+<!-- HERO FLOATING FLOWERS - Additional scattered flowers (12 flowers) -->
+<div class="hero-floating-flowers">
+  <div class="hero-float-flower hf-1"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-2"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-3"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-4"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-5"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-6"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-7"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-8"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-9"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-10"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-11"><img src="Portfolio/Flower.svg" alt="🌸"></div>
+  <div class="hero-float-flower hf-12"><img src="Portfolio/Flower.svg" alt="🌸"></div>
 </div>
 
 <!-- SIDE FLOWERS - OPTIMIZED (12 flowers) -->
