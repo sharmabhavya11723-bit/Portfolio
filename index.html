@@ -1128,9 +1128,58 @@
     transition: all 0.3s;
   }
   .feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(255,77,141,0.15);
-    border-color: var(--pink);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(233,69,96,0.2);
+    border-color: #e94560;
+  }
+
+  /* OMNIGEN Modal Feature Card Micro-interactions */
+  #omnigenModal .feature-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #omnigenModal .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(233,69,96,0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  #omnigenModal .feature-card:hover::before {
+    left: 100%;
+  }
+
+  #omnigenModal .feature-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(233,69,96,0.25);
+  }
+
+  #omnigenModal .feature-card:hover h3 {
+    color: #e94560;
+    transition: color 0.3s ease;
+  }
+
+  /* OMNIGEN website showcase micro-interactions */
+  #omnigenModal .website-showcase {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #omnigenModal .website-showcase:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  }
+
+  #omnigenModal .website-showcase img {
+    transition: transform 0.5s ease;
+  }
+
+  #omnigenModal .website-showcase:hover img {
+    transform: scale(1.01);
   }
   .feature-icon {
     font-size: 40px;
@@ -2614,20 +2663,22 @@
       </div>
     </div>
 
-    <div class="project-card reveal" style="transition-delay:0.3s">
-      <div class="project-thumb project-thumb-2">🎵</div>
+    <div class="project-card reveal" onclick="openOmnigenModal()" style="cursor: pointer; transition-delay:0.3s">
+      <div class="project-thumb">
+        <img src="Portfolio/3rd Case study.svg" alt="OMNIGEN Creative Synergy - Website Design" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+      </div>
       <div class="project-body">
-        <span class="project-tag">Figma · Motion Design</span>
-        <div class="project-title">Music App Animation</div>
-        <div class="project-desc">A high-fidelity audio visualizer using Smart Animate and advanced motion principles to simulate reactive sound waves. Seamless looping animations that reduce perceived wait times.</div>
+        <span class="project-tag">Figma · AI · Web Design</span>
+        <div class="project-title">OMNIGEN Creative Synergy</div>
+        <div class="project-desc">A comprehensive "one-stop creative hub" integrating AI-driven text, video, and sound production tools. Dark-themed landing page with sophisticated premium brand identity.</div>
       </div>
       <div class="project-footer">
         <div class="project-tools">
           <span class="tool-chip">Figma</span>
-          <span class="tool-chip">Smart Animate</span>
-          <span class="tool-chip">Motion</span>
+          <span class="tool-chip">AI Integration</span>
+          <span class="tool-chip">Web</span>
         </div>
-        <a href="#" class="project-link">↗</a>
+        <a href="#" class="project-link" onclick="event.stopPropagation(); openOmnigenModal();">↗</a>
       </div>
     </div>
   </div>
@@ -3435,6 +3486,166 @@
   </div>
 </div>
 
+<!-- OMNIGEN CREATIVE SYNERGY CASE STUDY MODAL -->
+<div id="omnigenModal" class="case-study-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeOmnigenModal()">&times;</button>
+    
+    <!-- Hero Section -->
+    <section class="case-study-hero" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+      <div class="hero-content">
+        <div class="reveal">
+          <span class="hero-tag" style="background: rgba(233,69,96,0.2); color: #e94560;">Case Study</span>
+          <h1 class="case-study-title" style="color: #fff;">OMNIGEN Creative Synergy</h1>
+          <p class="case-study-subtitle" style="color: rgba(255,255,255,0.8);">A one-stop creative hub integrating AI-driven text, video, and sound production tools</p>
+        </div>
+        <div class="project-meta reveal" style="color: rgba(255,255,255,0.6);">
+          <span>📅 2024</span>
+          <span>⏱️ 8 Weeks</span>
+          <span>🎨 UI/UX Design</span>
+        </div>
+      </div>
+      <div class="scroll-indicator reveal">
+        <div class="mouse" style="border-color: rgba(255,255,255,0.3);">
+          <div class="wheel" style="background: #e94560;"></div>
+        </div>
+        <span style="color: rgba(255,255,255,0.6);">Scroll to explore</span>
+      </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="case-study-section" style="background: #f8f9fa;">
+      <div class="overview-grid">
+        <div class="overview-text reveal">
+          <h2 class="section-title">The Challenge</h2>
+          <p class="section-text" style="color: #444; line-height: 1.8;">
+            Creative professionals often struggle with fragmented workflows, switching between multiple tools for text generation, video editing, and sound design. The challenge was to create a unified platform that brings all these capabilities under one roof with a sophisticated, premium dark-themed interface.
+          </p>
+        </div>
+        <div class="overview-image reveal" style="transition-delay: 0.2s;">
+          <div class="image-card" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%); padding: 40px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+            <div style="font-size: 60px; text-align: center; margin-bottom: 20px;">🎨</div>
+            <div style="color: #fff; text-align: center; font-size: 18px; font-weight: 600;">All-in-One Creative Suite</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Preview -->
+    <section class="case-study-section" style="background: white; padding: 80px 0;">
+      <div class="section-header">
+        <span class="section-number" style="background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%); color: white;">01</span>
+        <h2 class="section-title">Website Design Preview</h2>
+      </div>
+      <div class="design-preview-container reveal" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+        <div class="website-showcase" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 24px; padding: 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.4); overflow-y: auto; max-height: 80vh;">
+          <img src="Portfolio/3rd Case study.svg" alt="OMNIGEN Creative Synergy Website Design" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+        </div>
+        <p class="image-caption" style="text-align: center; margin-top: 30px; color: #666; font-size: 16px; font-style: italic;">
+          Full landing page design showcasing the dark-themed premium aesthetic with AI integration features
+        </p>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="case-study-section" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+      <div class="section-header">
+        <span class="section-number" style="background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%); color: white;">02</span>
+        <h2 class="section-title">Key Features</h2>
+      </div>
+      <div style="max-width: 1000px; margin: 0 auto; padding: 0 40px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+          <div class="reveal feature-card" style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div style="font-size: 40px; margin-bottom: 15px;">🤖</div>
+            <h3 style="color: #1a1a2e; margin-bottom: 10px; font-size: 18px;">AI Text Generation</h3>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">Smart content creation with contextual understanding and style adaptation</p>
+          </div>
+          <div class="reveal feature-card" style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; transition-delay: 0.1s;">
+            <div style="font-size: 40px; margin-bottom: 15px;">🎬</div>
+            <h3 style="color: #1a1a2e; margin-bottom: 10px; font-size: 18px;">Video Production</h3>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">Streamlined video editing with AI-powered effects and transitions</p>
+          </div>
+          <div class="reveal feature-card" style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; transition-delay: 0.2s;">
+            <div style="font-size: 40px; margin-bottom: 15px;">🎵</div>
+            <h3 style="color: #1a1a2e; margin-bottom: 10px; font-size: 18px;">Sound Design</h3>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">AI-generated soundscapes and audio enhancement tools</p>
+          </div>
+          <div class="reveal feature-card" style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; transition-delay: 0.3s;">
+            <div style="font-size: 40px; margin-bottom: 15px;">🌐</div>
+            <h3 style="color: #1a1a2e; margin-bottom: 10px; font-size: 18px;">Cloud Integration</h3>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">Seamless project sync across devices with real-time collaboration</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design System -->
+    <section class="case-study-section" style="background: white;">
+      <div class="section-header">
+        <span class="section-number" style="background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%); color: white;">03</span>
+        <h2 class="section-title">Design System</h2>
+      </div>
+      <div style="max-width: 900px; margin: 0 auto; padding: 0 40px;">
+        <div class="reveal" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 20px; padding: 50px; color: white;">
+          <h3 style="margin-bottom: 30px; font-size: 24px;">Color Palette</h3>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; background: #1a1a2e; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);"></div>
+              <span style="font-size: 12px; color: rgba(255,255,255,0.7);">#1a1a2e</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; background: #16213e; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);"></div>
+              <span style="font-size: 12px; color: rgba(255,255,255,0.7);">#16213e</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; background: #0f3460; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);"></div>
+              <span style="font-size: 12px; color: rgba(255,255,255,0.7);">#0f3460</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; background: #e94560; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(233,69,96,0.4);"></div>
+              <span style="font-size: 12px; color: rgba(255,255,255,0.7);">#e94560</span>
+            </div>
+          </div>
+          <h3 style="margin-bottom: 20px; font-size: 24px;">Typography</h3>
+          <p style="color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 15px;">Primary: Inter / SF Pro Display - Clean, modern sans-serif for UI elements</p>
+          <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Secondary: Space Grotesk - Geometric accents for headings and CTAs</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="case-study-section" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%); border-bottom: none;">
+      <div class="conclusion-content reveal" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <div class="conclusion-emoji">🚀</div>
+        <h2 class="conclusion-title" style="color: #fff;">Redefining Creative Workflows</h2>
+        <p class="conclusion-text" style="color: rgba(255,255,255,0.8);">
+          OMNIGEN Creative Synergy represents a paradigm shift in how creative professionals approach their work. By consolidating multiple AI-powered tools into a unified, intuitive platform with a premium dark aesthetic, we've created a solution that not only enhances productivity but also inspires creativity.
+        </p>
+        <div class="result-stats" style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 800; color: #e94560;">3-in-1</div>
+            <div style="font-size: 14px; color: rgba(255,255,255,0.6);">Creative Tools</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 800; color: #e94560;">AI</div>
+            <div style="font-size: 14px; color: rgba(255,255,255,0.6);">Powered</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 800; color: #e94560;">Dark</div>
+            <div style="font-size: 14px; color: rgba(255,255,255,0.6);">Premium UI</div>
+          </div>
+        </div>
+        <button class="back-to-top-btn pink-btn" onclick="scrollToTopOmnigen()" style="margin-top: 60px;">
+          <span>Back to Top</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+  </div>
+</div>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="section-tag">What I Do</div>
@@ -3777,6 +3988,37 @@
   // Scroll to top of Skillify modal
   function scrollToTopSkillify() {
     const modal = document.getElementById('skillifyModal');
+    if (modal) {
+      modal.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // OMNIGEN Modal Functions
+  function openOmnigenModal() {
+    const modal = document.getElementById('omnigenModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeOmnigenModal() {
+    const modal = document.getElementById('omnigenModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close OMNIGEN modal on backdrop click
+  document.getElementById('omnigenModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeOmnigenModal();
+    }
+  });
+
+  // Scroll to top of OMNIGEN modal
+  function scrollToTopOmnigen() {
+    const modal = document.getElementById('omnigenModal');
     if (modal) {
       modal.scrollTo({
         top: 0,
